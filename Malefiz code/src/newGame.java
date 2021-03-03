@@ -39,6 +39,7 @@ public class newGame extends JFrame implements ActionListener
         frame.setVisible(true);
     }
     public void actionPerformed (ActionEvent event){
+    	
     }
     /**
      * @param args
