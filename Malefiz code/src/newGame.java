@@ -14,10 +14,13 @@ import javax.swing.*;
 public class newGame extends JFrame implements ActionListener 
 {
      
-     public JFrame frame;
-     public JPanel userNamePanel;
-     public JTextField userNameText;
-     public JLabel inputNameLabel;
+     /**
+	 * 
+	 */
+	public JFrame frame;
+    public JPanel userNamePanel;
+    public JTextField userNameText;
+    public JLabel inputNameLabel;
 
 
     public newGame() {
@@ -45,7 +48,7 @@ public class newGame extends JFrame implements ActionListener
      * @param args
      */
     public static void main(String[] args) {
-        newGame game = new newGame();
+    	new newGame();
 
     }
 
