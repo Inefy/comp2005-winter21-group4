@@ -2,8 +2,8 @@
 // even if you are working with just swings.
 import javax.swing.*;
 import java.awt.*;
-class gui {
-    public static void main(String args[]) {
+public class main {
+    public main() {
 
         //Creating the Frame
         JFrame frame = new JFrame("Malefiz");
@@ -40,4 +40,9 @@ class gui {
         frame.getContentPane().add(BorderLayout.CENTER, subPanel);
         frame.setVisible(true);
     }
+    
+    public static void main(String[] args) {
+		// TODO Auto-generated method stub
+    	new main();
+	}
 }
