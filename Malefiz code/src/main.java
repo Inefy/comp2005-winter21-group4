@@ -11,6 +11,7 @@ public class main implements ActionListener, MouseListener
     JMenuItem m22, m33, m44;
     JFrame frame;
     JPanel mainPanel = new JPanel();
+    JButton newGame;
     public main() 
     {
 
@@ -42,6 +43,7 @@ public class main implements ActionListener, MouseListener
         mainPanel.add(newGame);
         mainPanel.add(exitGame);
         
+        newGame.addActionListener(this);
         
         brightness.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent aActionEvent)
@@ -70,7 +72,9 @@ public class main implements ActionListener, MouseListener
               if(aActionEvent.getSource() == theme)
               {
             	  new chooseTheme(frame, mainPanel);
-              }  
+              } 
+              
+              
             }
         });
         menubar_display.add(theme);

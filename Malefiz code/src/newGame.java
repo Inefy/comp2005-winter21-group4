@@ -15,9 +15,10 @@ public class newGame extends JFrame implements ActionListener
 {
      
      /**
-	 * 
-	 */
-	public JFrame frame;
+        * 
+     */
+    
+    public JFrame frame;
     public JPanel userNamePanel;
     public JTextField userNameText;
     public JLabel inputNameLabel;
@@ -42,13 +43,13 @@ public class newGame extends JFrame implements ActionListener
         frame.setVisible(true);
     }
     public void actionPerformed (ActionEvent event){
-    	
+        
     }
     /**
      * @param args
      */
     public static void main(String[] args) {
-    	new newGame();
+        new newGame();
 
     }
 
