@@ -2,8 +2,11 @@
 // even if you are working with just swings.
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*; // added this
 
-public class main {
+public class main implements ActionListener {
+    
+    private JButton exitGame;
     public main() {
 
         //Creating the Frame
@@ -26,7 +29,7 @@ public class main {
         //creating buttons
         JButton newGame = new JButton("New Game");
         newGame.setSize(50, 50);
-        JButton exitGame = new JButton("Exit Game");
+        exitGame = new JButton("Exit Game");
         exitGame.setSize(50, 50);
         JPanel subPanel = new JPanel();
         JButton loadGame = new JButton("Load Game");
@@ -34,12 +37,22 @@ public class main {
         subPanel.add(loadGame);
         subPanel.add(newGame);
         subPanel.add(exitGame);
+        
+        exitGame.addActionListener(this);
 
 
         //Adding Components to the frame.
         frame.getContentPane().add(BorderLayout.NORTH, mb);
         frame.getContentPane().add(BorderLayout.CENTER, subPanel);
         frame.setVisible(true);
+    }
+    public void actionPerformed (ActionEvent event){
+        
+        Object selected = event.getSource();
+        
+        if (selected.equals(exitGame)){
+            System.exit(0);
+        }
     }
     
     public static void main(String[] args) {
