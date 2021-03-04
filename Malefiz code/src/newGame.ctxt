@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=newGame
+comment0.text=\n\ @author\ Nima\ Pishva\n\n
+comment1.params=
+comment1.target=newGame()
+comment2.params=event
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=args
+comment3.target=void\ main(java.lang.String[])
+comment3.text=\n\ @param\ args\n
+numComments=4
