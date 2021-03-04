@@ -1,5 +1,5 @@
 #BlueJ class context
 comment0.target=exitGame
 comment1.params=
-comment1.target=exitGame()
+comment1.target=void\ exitGame()
 numComments=2

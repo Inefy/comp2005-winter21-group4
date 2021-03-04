@@ -36,7 +36,7 @@ public class playerNames extends JFrame implements ActionListener
         frame = new JFrame("Player Names");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(600, 450);
-        frame.setResizable(true);
+        frame.setResizable(false);
         
         mainPanel = new JPanel();
         mainPanel.setLayout(new BorderLayout());

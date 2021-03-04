@@ -7,6 +7,7 @@ import java.awt.event.*; // added this
 public class main implements ActionListener {
     
     private JButton exitGame;
+    private JButton newGame;
     public main() {
 
         //Creating the Frame
@@ -39,24 +40,35 @@ public class main implements ActionListener {
         subPanel.add(exitGame);
         
         exitGame.addActionListener(this);
-
+        newGame.addActionListener(this);
 
         //Adding Components to the frame.
         frame.getContentPane().add(BorderLayout.NORTH, mb);
         frame.getContentPane().add(BorderLayout.CENTER, subPanel);
+        
+        
+        
+        
         frame.setVisible(true);
+        
     }
     public void actionPerformed (ActionEvent event){
         
         Object selected = event.getSource();
         
         if (selected.equals(exitGame)){
-            System.exit(0);
+            exitGame exitObject = new exitGame();
+            exitObject.exitGame();
+        }
+        
+        if (selected.equals(newGame)){ //trying to open player name from here
+            playerNames playerNameObject = new playerNames();
+            //playerNameObject.playerNames();
         }
     }
     
     public static void main(String[] args) {
-		// TODO Auto-generated method stub
-    	new main();
-	}
+        // TODO Auto-generated method stub
+        new main();
+    }
 }

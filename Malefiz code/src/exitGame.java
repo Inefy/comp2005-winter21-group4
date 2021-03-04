@@ -2,7 +2,7 @@
 
 public class exitGame {
 	
-	public exitGame() {
+	public void exitGame() {
 		System.exit(0);
 	}
 	
