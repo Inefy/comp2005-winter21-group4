@@ -73,7 +73,7 @@ public class main implements ActionListener
             {
               if(aActionEvent.getSource() == exitGame)
               {
-            	  //new exitGame();
+            	  new exitGame();
                
               }  
             }
