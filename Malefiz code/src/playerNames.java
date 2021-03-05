@@ -90,7 +90,6 @@ public class playerNames extends JFrame implements ActionListener
         
         if (selected.equals(player1Button)){
             String player1 = JOptionPane.showInputDialog(null, "Enter your player Name please");
-            
             player1Name.setText("Player1: " + player1);
         }
         

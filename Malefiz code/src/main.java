@@ -1,60 +1,96 @@
-//Usually you will require both swing and awt packages
-// even if you are working with just swings.
+//contributor: zac, Nima, Aman, Fysal
+
 import java.awt.*;
-//import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
-//import java.awt.Cursor;
 
-public class main implements ActionListener, MouseListener 
+public class main implements ActionListener
  {
-    JMenuItem m22, m33, m44;
-    JFrame frame;
-    JPanel mainPanel = new JPanel();
-    JButton newGame;
+    public JMenuItem cursor, theme;
+    public JFrame frame;
+    public JPanel mainPanel = new JPanel();
+    public JButton newGame;
+    public JLabel name = new JLabel("Malefiz");
+    public JPanel centerPanel = new JPanel();
+    public JPanel northPanel = new JPanel();
+    
     public main() 
     {
-
         //Creating the Frame
         JFrame frame = new JFrame("Malefiz");
+        frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(700, 700);
+        frame.setResizable(false);
+        frame.setVisible(true);
 
         //Creating the MenuBar and adding components
         JMenuBar menubar = new JMenuBar();
         JMenu menubar_display = new JMenu("Display Options");
         menubar_display.addActionListener(this);
         menubar.add(menubar_display);
-        JMenuItem brightness = new JMenuItem("Choose brightness");
-        JMenuItem cursor = new JMenuItem("Choose cursor");
-        JMenuItem theme = new JMenuItem("Choose theme");
+        cursor = new JMenuItem("Choose cursor");
+        theme = new JMenuItem("Choose theme");
         
-      //creating buttons
+        //creating buttons
         JButton newGame = new JButton("New Game");
-        newGame.setSize(50, 50);
-        
         JButton exitGame = new JButton("Exit Game");
-        exitGame.setSize(50, 50);
-        
         JButton loadGame = new JButton("Load Game");
-        exitGame.setSize(50, 50);
+        newGame.setFont(new Font("Tahoma", Font.PLAIN, 40));
+        exitGame.setFont(new Font("Tahoma", Font.PLAIN, 40));
+        loadGame.setFont(new Font("Tahoma", Font.PLAIN, 40));
+        newGame.setSize(40, 40);
+        exitGame.setSize(40, 40);
+        exitGame.setSize(40, 40);
         
-        mainPanel.add(loadGame);
-        mainPanel.add(newGame);
-        mainPanel.add(exitGame);
+        mainPanel.setLayout(new BorderLayout());
+        mainPanel.setBackground(Color.WHITE);
         
-        newGame.addActionListener(this);
+        northPanel.setLayout(new FlowLayout());
+        northPanel.setOpaque(false);
+        name.setFont(new Font("Tahoma", Font.PLAIN, 80));
+        northPanel.add(name);
+        mainPanel.add(northPanel, BorderLayout.NORTH);
         
-        brightness.addActionListener(new ActionListener(){
+        centerPanel.setLayout(new GridLayout(3, 1));
+        centerPanel.setOpaque(false);
+        centerPanel.add(newGame).setLocation(1, 1);
+        newGame.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent aActionEvent)
             {
-              if(aActionEvent.getSource() == brightness)
+              if(aActionEvent.getSource() == newGame)
               {
-                  //chooseBrightness bright = new chooseBrightness(frame);
+            	  new newGame(mainPanel);
+               
               }  
             }
         });
-        menubar_display.add(brightness);
+        
+        centerPanel.add(loadGame).setLocation(2, 1);
+        centerPanel.add(exitGame).setLocation(3, 1);
+        exitGame.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent aActionEvent)
+            {
+              if(aActionEvent.getSource() == exitGame)
+              {
+            	  new exitGame();
+               
+              }  
+            }
+        });
+        
+        newGame.setOpaque(false);
+        newGame.setContentAreaFilled(false);
+        newGame.setBorderPainted(false);
+        loadGame.setOpaque(false);
+        loadGame.setContentAreaFilled(false);
+        loadGame.setBorderPainted(false);
+        exitGame.setOpaque(false);
+        exitGame.setContentAreaFilled(false);
+        exitGame.setBorderPainted(false);
+        
+        mainPanel.add(centerPanel, BorderLayout.CENTER);
+        
+        menubar_display.add(cursor);
         cursor.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent aActionEvent)
             {
@@ -65,34 +101,29 @@ public class main implements ActionListener, MouseListener
               }  
             }
         });
-        menubar_display.add(cursor);
+        
+        menubar_display.add(theme);
         theme.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent aActionEvent)
             {
               if(aActionEvent.getSource() == theme)
               {
-            	  new chooseTheme(frame, mainPanel);
+            	  new chooseTheme(mainPanel);
               } 
-              
               
             }
         });
-        menubar_display.add(theme);
-       
-
-        
 
 
         //Adding Components to the frame.
         frame.getContentPane().add(BorderLayout.NORTH, menubar);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
-        frame.setVisible(true);
+        
     }
     
     public static void main(String[] args) 
     {
-		// TODO Auto-generated method stub
-    	new main();
+		new main();
     }
 	
     public void actionPerformed(ActionEvent aevt)
@@ -100,14 +131,4 @@ public class main implements ActionListener, MouseListener
     	
     }
     
-    public void mouseClicked(MouseEvent mevt)
-    {
-        //mevt.getSource();
-    	
-    }
-    public void mouseEntered(MouseEvent arg0){}
-    public void mouseExited(MouseEvent arg0) {}
-    public void mousePressed(MouseEvent arg0) {}
-    public void mouseReleased(MouseEvent arg0) {}
-
 }
