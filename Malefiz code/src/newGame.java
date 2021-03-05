@@ -17,6 +17,7 @@ public class newGame extends JFrame implements ActionListener
     	newGamePanel.removeAll();
     	newGamePanel.revalidate();
     	newGamePanel.repaint();
+    	new Player(newGamePanel);
     	
     	
     }

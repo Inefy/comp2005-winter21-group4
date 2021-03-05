@@ -59,6 +59,7 @@ public class main implements ActionListener
             {
               if(aActionEvent.getSource() == newGame)
               {
+                  
             	  new newGame(mainPanel);
                
               }  
@@ -72,7 +73,7 @@ public class main implements ActionListener
             {
               if(aActionEvent.getSource() == exitGame)
               {
-            	  new exitGame();
+            	  //new exitGame();
                
               }  
             }
@@ -121,9 +122,19 @@ public class main implements ActionListener
         
     }
     
+    public static void main(String[] args) 
+    {
+		new main();
+    }
+	
     public void actionPerformed(ActionEvent aevt)
     {
     	
     }
+    
+    
+    
+    
+    
     
 }
