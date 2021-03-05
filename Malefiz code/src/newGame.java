@@ -1,9 +1,7 @@
-import java.awt.event.*;
-import java.awt.*;
 import javax.swing.*;
 
 
-public class newGame extends JFrame implements ActionListener 
+public class newGame extends JPanel
 {
     
     public JFrame frame;
@@ -19,10 +17,5 @@ public class newGame extends JFrame implements ActionListener
     	newGamePanel.repaint();
     	new Player(newGamePanel);
     	
-    	
     }
-    public void actionPerformed (ActionEvent aevt){
-    	
-    }
-
 }
