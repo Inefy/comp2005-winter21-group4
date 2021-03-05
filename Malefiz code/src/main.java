@@ -121,11 +121,6 @@ public class main implements ActionListener
         
     }
     
-    public static void main(String[] args) 
-    {
-		new main();
-    }
-	
     public void actionPerformed(ActionEvent aevt)
     {
     	
