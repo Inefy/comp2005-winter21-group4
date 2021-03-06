@@ -13,16 +13,16 @@ public class displayBoard {
     public JLabel inputNameLabel;
     public JButton[][] step;
    
-    public displayBoard() {
-    	//boardPanel = mainPanel;
-    	//boardPanel.removeAll();
-    	//boardPanel.revalidate();
-    	//boardPanel.repaint();
+    public displayBoard(JPanel p) {
+    	boardPanel = p;
+    	boardPanel.removeAll();
+    	boardPanel.revalidate();
+    	boardPanel.repaint();
     	
-    	frame = new JFrame("board_test");
-        frame.setSize(700, 700);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+    	//frame = new JFrame("board_test");
+        //frame.setSize(700, 700);
+        //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        //frame.setResizable(false);
         
         
     	
@@ -170,14 +170,9 @@ public class displayBoard {
         	}
         }
         
-        frame.getContentPane().add(BorderLayout.CENTER, boardPanel);
-        frame.pack();
-        frame.setVisible(true);
-    }
-    
-    public static void main(String[] args) 
-    {
-		new displayBoard();
+        //frame.getContentPane().add(BorderLayout.CENTER, boardPanel);
+        //frame.pack();
+        //frame.setVisible(true);
     }
 }
 

@@ -22,6 +22,16 @@ public class Player extends JFrame implements ActionListener
         info.setBackground(Color.WHITE);
         
         JButton next = new JButton("NEXT");
+        next.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent aActionEvent)
+            {
+              if(aActionEvent.getSource() == next)
+              {
+            	  new displayBoard(info);
+              } 
+              
+            }
+        });
         
         
         JPanel player_panel = new JPanel();
