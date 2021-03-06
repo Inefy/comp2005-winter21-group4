@@ -9,15 +9,16 @@ public class displayBoard {
 	
     public JPanel boardPanel;
     public JPanel backPanel;
+    public JPanel buttonPanel;
     public JLabel inputNameLabel;
     public JButton[][] step;
     public JButton rollDice, saveGame, quit;
    
     public displayBoard(JPanel p) {
-    	boardPanel = p;
-    	boardPanel.removeAll();
-    	boardPanel.revalidate();
-    	boardPanel.repaint();
+    	backPanel = p;
+    	backPanel.removeAll();
+    	backPanel.revalidate();
+    	backPanel.repaint();
     	
     	//frame = new JFrame("board_test");
         //frame.setSize(700, 700);
@@ -28,16 +29,18 @@ public class displayBoard {
     	saveGame = new JButton("Save Game");
     	quit = new JButton("Quit");
     	
-    	backPanel = new JPanel(new BorderLayout());
-    	backPanel.add(boardPanel, BorderLayout.CENTER);
-    	backPanel.add(rollDice, BorderLayout.SOUTH);
-    	backPanel.add(saveGame, BorderLayout.SOUTH);
-    	backPanel.add(quit, BorderLayout.SOUTH);
-    	//step.setBorder(BorderFactory.createEmptyBorder());
+    	backPanel.setLayout(new BorderLayout());
+    	
+    	buttonPanel = new JPanel();
+    	buttonPanel.add(rollDice);
+    	buttonPanel.add(saveGame);
+    	buttonPanel.add(quit);
+    	
+    	backPanel.add(buttonPanel, BorderLayout.SOUTH);
     	
     	int row = 16;
         int col = 17;
-        boardPanel.setLayout(new GridLayout(row, col));
+        boardPanel = new JPanel(new GridLayout(row, col));
         
         step = new JButton[row][col];
         
@@ -177,26 +180,6 @@ public class displayBoard {
         	}
         }
         
-        //frame.getContentPane().add(BorderLayout.CENTER, boardPanel);
-        //frame.pack();
-        //frame.setVisible(true);
+        backPanel.add(boardPanel, BorderLayout.CENTER);
     }
 }
-
-        /*int boardArray[][] = {{8},
-        {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
-        {0,16},
-        {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
-        {8},
-        {6,7,8,9,10},
-        {6,10},
-        {4,5,6,7,8,9,10,11,12},
-        {4,12},
-        {2,3,4,5,6,7,8,9,10,11,12,13,14},
-        {2,14},
-        {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
-        {0,16},
-        {0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16},
-        {1,2,3,5.6,7,8,10,11,13,14,15},
-        {1,3,5,7,9,11,13,15}};
-        */
