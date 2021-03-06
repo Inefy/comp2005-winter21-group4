@@ -2,16 +2,16 @@ import java.awt.*;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
-import java.awt.Color;
 
 
 
 public class displayBoard { 
 	
-	public JFrame frame;
     public JPanel boardPanel;
+    public JPanel backPanel;
     public JLabel inputNameLabel;
     public JButton[][] step;
+    public JButton rollDice, saveGame, quit;
    
     public displayBoard(JPanel p) {
     	boardPanel = p;
@@ -24,8 +24,15 @@ public class displayBoard {
         //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //frame.setResizable(false);
         
-        
+    	rollDice = new JButton("Roll Dice");
+    	saveGame = new JButton("Save Game");
+    	quit = new JButton("Quit");
     	
+    	backPanel = new JPanel(new BorderLayout());
+    	backPanel.add(boardPanel, BorderLayout.CENTER);
+    	backPanel.add(rollDice, BorderLayout.SOUTH);
+    	backPanel.add(saveGame, BorderLayout.SOUTH);
+    	backPanel.add(quit, BorderLayout.SOUTH);
     	//step.setBorder(BorderFactory.createEmptyBorder());
     	
     	int row = 16;
