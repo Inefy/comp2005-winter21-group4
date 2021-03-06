@@ -14,9 +14,9 @@ public class Player extends JPanel implements ActionListener
     public JButton player1, player2, player3, player4;
     public JButton pawn1, pawn2, pawn3, pawn4;
     public JButton color1,color2,color3,color4;
-    public JLabel change_name = new JLabel("Change Name");
-    public JLabel change_colour = new JLabel("Pick Colour");
-    public JLabel change_pawn = new JLabel("Change Shape");
+    public JLabel change_name = new JLabel("                                                           Change Name");
+    public JLabel change_colour = new JLabel("  Pick Colour");
+    public JLabel change_pawn = new JLabel("Change Shape  ");
     
     public Player(JPanel p)
     {
@@ -349,7 +349,7 @@ public class Player extends JPanel implements ActionListener
         info.add(colour_panel, BorderLayout.WEST);
         info.add(player_panel, BorderLayout.CENTER);
         info.add(pawn_panel, BorderLayout.EAST);
-        info.add(next, BorderLayout.SOUTH);
+        info.add(start, BorderLayout.SOUTH);
         
         
         //frame.getContentPane().add(BorderLayout.CENTER, info);
