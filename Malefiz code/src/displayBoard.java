@@ -27,7 +27,7 @@ public class displayBoard {
         
     	
     	//step.setBorder(BorderFactory.createEmptyBorder());
-    	boardPanel = new JPanel();
+    	
     	int row = 16;
         int col = 17;
         boardPanel.setLayout(new GridLayout(row, col));
@@ -122,7 +122,7 @@ public class displayBoard {
         			step[i][j].setEnabled(true);}
         			}
         		if (i==10) {
-        			if(j ==2||j ==14) {
+        			if(j ==2|j ==6|j ==10|j ==14) {
         			step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/emptyspace.png")));
         			step[i][j].setBorderPainted(false);
         			step[i][j].setText(null);
@@ -137,7 +137,7 @@ public class displayBoard {
         			step[i][j].setEnabled(true);}
         			}
         		if (i==12) {
-        			if(j ==0||j ==16) {
+        			if(j ==0|j ==4|j ==8|j ==12||j ==16) {
         			step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/emptyspace.png")));
         			step[i][j].setBorderPainted(false);
         			step[i][j].setText(null);
