@@ -1,3 +1,5 @@
+package src;
+
 //this class just exits the game
 
 public class exitGame {

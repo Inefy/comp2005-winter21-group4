@@ -1,0 +1,11 @@
+#BlueJ class context
+comment0.target=chooseCursor
+comment1.params=main_frame
+comment1.target=chooseCursor(javax.swing.JFrame)
+comment2.params=aevt
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=aevt
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=5
