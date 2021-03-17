@@ -4,7 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-public class main implements ActionListener
+public class mainUI implements ActionListener
  {
     public JMenuItem cursor, theme;
     public JFrame frame;
@@ -14,7 +14,7 @@ public class main implements ActionListener
     public JPanel centerPanel = new JPanel();
     public JPanel northPanel = new JPanel();
     
-    public main() 
+    public mainUI() 
     {
         //Creating the Frame
         JFrame frame = new JFrame("Malefiz");
@@ -128,7 +128,7 @@ public class main implements ActionListener
     
     public static void main(String[] args) 
     {
-		new main();
+		new mainUI();
     }
 	
     public void actionPerformed(ActionEvent aevt)
