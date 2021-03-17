@@ -1,13 +1,15 @@
 //group 4
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.*;
 import java.util.*;
 import javax.swing.*;
 
 
 
-public class displayBoard { 
+public class displayBoard implements ActionListener{ 
 	
     public JPanel boardPanel;
     public JPanel backPanel;
@@ -30,7 +32,7 @@ public class displayBoard {
     	rollDice = new JButton("Roll Dice");
     	saveGame = new JButton("Save Game");
     	quit = new JButton("Quit");
-    	
+    	quit.addActionListener(this);
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
@@ -184,4 +186,13 @@ public class displayBoard {
         
         backPanel.add(boardPanel, BorderLayout.CENTER);
     }
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		Object selected = e.getSource();
+		if(selected.equals(quit)) {
+			System.exit(0);
+		}
+		
+	}
 }
