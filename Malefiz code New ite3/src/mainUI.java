@@ -14,10 +14,11 @@ public class mainUI implements ActionListener
     public JPanel centerPanel = new JPanel();
     public JPanel northPanel = new JPanel();
     
-    public mainUI() 
+    public mainUI(JFrame UIframe) 
     {
         //Creating the Frame
-        JFrame frame = new JFrame("Malefiz");
+    	frame = UIframe;
+        frame.setTitle("Malefiz");
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
@@ -60,7 +61,7 @@ public class mainUI implements ActionListener
               if(aActionEvent.getSource() == newGame)
               {
                   
-            	  new newGame(mainPanel);
+            	  new newGame(frame, mainPanel);
                
               }  
             }
@@ -74,15 +75,9 @@ public class mainUI implements ActionListener
             	Object selected = aActionEvent.getSource();
               if(selected.equals(exitGame)) //pop up box prompting user to confirm quitting
               {
-            	  int reply = JOptionPane.showConfirmDialog(
-            			    frame,
-            			    "Are you sure you want to exit the game?",
-            			    "An Insane Question",
-            			    JOptionPane.YES_NO_OPTION);
-            	  if (reply == JOptionPane.YES_OPTION)
-                  {
-                      new exitGame();
-                  }
+            	  
+            	  new exitGame(frame);
+            	  
               }  
             }
         });
@@ -130,15 +125,8 @@ public class mainUI implements ActionListener
         
     }
     
-	
     public void actionPerformed(ActionEvent aevt)
     {
     	
     }
-    
-    
-    
-    
-    
-    
 }

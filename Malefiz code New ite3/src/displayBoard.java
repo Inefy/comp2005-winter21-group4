@@ -3,22 +3,22 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.*;
-import java.util.*;
 import javax.swing.*;
 
 
 
 public class displayBoard implements ActionListener{ 
 	
-    public JPanel boardPanel;
+    public JFrame UIframe;
+	public JPanel boardPanel;
     public JPanel backPanel;
     public JPanel buttonPanel;
     public JLabel inputNameLabel;
     public JButton[][] step;
-    public JButton rollDice, saveGame, quit;
+    public JButton rollDice, saveGame, quit, exit;
    
-    public displayBoard(JPanel p) {
+    public displayBoard(JFrame frame, JPanel p) {
+    	UIframe = frame;
     	backPanel = p;
     	backPanel.removeAll();
     	backPanel.revalidate();
@@ -31,14 +31,17 @@ public class displayBoard implements ActionListener{
         
     	rollDice = new JButton("Roll Dice");
     	saveGame = new JButton("Save Game");
-    	quit = new JButton("Quit");
+    	quit = new JButton("Quit Game");
+    	exit = new JButton("Exit Game");
     	quit.addActionListener(this);
+    	exit.addActionListener(this);
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
     	buttonPanel.add(rollDice);
     	buttonPanel.add(saveGame);
     	buttonPanel.add(quit);
+    	buttonPanel.add(exit);
     	
     	backPanel.add(buttonPanel, BorderLayout.SOUTH);
     	
@@ -191,7 +194,19 @@ public class displayBoard implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object selected = e.getSource();
 		if(selected.equals(quit)) {
-			new exitGame();
+			int reply = JOptionPane.showConfirmDialog(
+					UIframe,
+				    "Are you sure you want to Quit the game?",
+				    "An Insane Question",
+				    JOptionPane.YES_NO_OPTION);
+		  if (reply == JOptionPane.YES_OPTION)
+	      {
+			  //direct to mainUI()
+	      }
+		}
+		
+		if(selected.equals(exit)) {
+			new exitGame(UIframe);
 		}
 		
 	}

@@ -3,12 +3,12 @@ import java.awt.*;
 import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
-import java.awt.Cursor;
 
 public class Player extends JPanel implements ActionListener
 {
     
-    public JPanel info, player_panel, colour_panel, pawn_panel;
+    public JFrame UIframe;
+	public JPanel info, player_panel, colour_panel, pawn_panel;
     public JOptionPane colour, pawn;
     public JButton start ;
     public JButton player1, player2, player3, player4;
@@ -18,9 +18,9 @@ public class Player extends JPanel implements ActionListener
     public JLabel change_colour = new JLabel("  Pick Colour");
     public JLabel change_pawn = new JLabel("Change Shape  ");
     
-    public Player(JPanel p)
+    public Player(JFrame frame, JPanel p)
     {
-        
+    	UIframe = frame;
         info = p;
         info.setLayout( new BorderLayout());
         info.setBackground(Color.WHITE);
@@ -31,7 +31,7 @@ public class Player extends JPanel implements ActionListener
             {
               if(aActionEvent.getSource() == start)
               {
-            	  new displayBoard(info);
+            	  new displayBoard(UIframe, info);
               } 
               
             }
