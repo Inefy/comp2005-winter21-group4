@@ -191,7 +191,7 @@ public class displayBoard implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		Object selected = e.getSource();
 		if(selected.equals(quit)) {
-			System.exit(0);
+			new exitGame();
 		}
 		
 	}
