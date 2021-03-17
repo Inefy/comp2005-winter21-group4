@@ -20,13 +20,13 @@ public class mainUI implements ActionListener
         JFrame frame = new JFrame("Malefiz");
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(false);
+        frame.setResizable(true);
         frame.setVisible(true);
 
         //Creating the MenuBar and adding components
         JMenuBar menubar = new JMenuBar();
         JMenu menubar_display = new JMenu("Display Options");
-        menubar_display.addActionListener(this);
+        //menubar_display.addActionListener(this);
         menubar.add(menubar_display);
         cursor = new JMenuItem("Choose cursor");
         theme = new JMenuItem("Choose theme");
@@ -74,11 +74,15 @@ public class mainUI implements ActionListener
             	Object selected = aActionEvent.getSource();
               if(selected.equals(exitGame)) //pop up box prompting user to confirm quitting
               {
-            	  int n = JOptionPane.showConfirmDialog(
+            	  int reply = JOptionPane.showConfirmDialog(
             			    frame,
             			    "Are you sure you want to exit the game?",
-            			    "An Inane Question",
+            			    "An Insane Question",
             			    JOptionPane.YES_NO_OPTION);
+            	  if (reply == JOptionPane.YES_OPTION)
+                  {
+                      new exitGame();
+                  }
               }  
             }
         });
@@ -113,7 +117,7 @@ public class mainUI implements ActionListener
             {
               if(aActionEvent.getSource() == theme)
               {
-            	  new chooseTheme(mainPanel);
+            	  new chooseTheme(frame,mainPanel);
               } 
               
             }
@@ -126,10 +130,6 @@ public class mainUI implements ActionListener
         
     }
     
-    public static void main(String[] args) 
-    {
-		new mainUI();
-    }
 	
     public void actionPerformed(ActionEvent aevt)
     {

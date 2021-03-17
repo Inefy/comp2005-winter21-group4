@@ -1,63 +1,26 @@
 import java.awt.*;
-import java.awt.Color;
-import java.awt.event.*;
 import javax.swing.*;
-//import java.awt.Cursor;
 
-public class chooseTheme implements ActionListener
+public class chooseTheme
 {
-    JFrame frame = new JFrame("CHOOSE THEME");
-    JPanel info;
-    JButton light,dark;
     JFrame fra;
-    public chooseTheme(JPanel panel)
+    public chooseTheme(JFrame frame, JPanel panel)
     {
        JPanel subPanel = panel;
-       info = new JPanel();
-       
-       light = new JButton("LIGHT");
-       info.add(light);
-       light.addActionListener(new ActionListener(){
-           public void actionPerformed(ActionEvent aActionEvent)
-           {
-               if (aActionEvent.getSource() == light)
-               {
-                 subPanel.setBackground(Color.WHITE); 
-                 
-               }
-           }
-           });
-       dark = new JButton("DARK");
-       info.add(dark);
-       dark.addActionListener(new ActionListener(){
-        public void actionPerformed(ActionEvent aActionEvent)
-        {
-            if (aActionEvent.getSource() == dark)
-            {
-              subPanel.setBackground(Color.PINK); 
-              
-            }
-        }
-        });
-       
-       
-       
-       
-       
-       
-       frame.getContentPane().setLayout( new BorderLayout());
-      
-       frame.getContentPane().add(info, BorderLayout.NORTH);
-         
-       frame.pack();
-       frame.setVisible(true);
-       
-       
-    }
-    
-    public void actionPerformed(ActionEvent aevt)
-    {
-        
-    }    
-    
+       JFrame UIFrame = frame;
+       String[] options = new String[2];
+  	   options[0] = new String("Light Mode");
+ 	   options[1] = new String("Dark Mode");
+ 	   int result = JOptionPane.showOptionDialog(UIFrame,"Change Theme",
+ 	  			 "Title", 0,JOptionPane.INFORMATION_MESSAGE,
+ 	  			 null,options,null);
+ 	  	 switch (result) {
+ 	  	 case 0:
+ 	  		 subPanel.setBackground(Color.WHITE);
+ 	  		 break;
+ 	  	 case 1:
+ 	  		subPanel.setBackground(Color.PINK); 
+ 	  		 break;
+ 	  	 } 
+    }  
 }
