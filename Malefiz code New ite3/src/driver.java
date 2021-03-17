@@ -7,6 +7,4 @@ public class driver {
     	JFrame frame = new JFrame();
 		new mainUI(frame);
     }
-
-
 }
