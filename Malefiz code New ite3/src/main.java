@@ -41,7 +41,7 @@ public class main implements ActionListener
         newGame.setSize(40, 40);
         exitGame.setSize(40, 40);
         exitGame.setSize(40, 40);
-        
+        exitGame.addActionListener(this);
         mainPanel.setLayout(new BorderLayout());
         mainPanel.setBackground(Color.WHITE);
         
@@ -71,10 +71,14 @@ public class main implements ActionListener
         exitGame.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent aActionEvent)
             {
-              if(aActionEvent.getSource() == exitGame)
+            	Object selected = aActionEvent.getSource();
+              if(selected.equals(exitGame)) //pop up box prompting user to confirm quitting
               {
-            	  new exitGame();
-               
+            	  int n = JOptionPane.showConfirmDialog(
+            			    frame,
+            			    "Are you sure you want to exit the game?",
+            			    "An Inane Question",
+            			    JOptionPane.YES_NO_OPTION);
               }  
             }
         });
