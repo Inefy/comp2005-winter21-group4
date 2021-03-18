@@ -22,6 +22,7 @@ public class displayBoard implements ActionListener{
     public JButton rollDice, saveGame, mainui, exit;
     public JLabel valueLabel = new JLabel("Dice Value: -   ");
     public int diceValue;
+    public Icon emptySpace = new ImageIcon(displayBoard.class.getResource("/images/emptyspace.png"));
     //public String[] names;
    
     public displayBoard(JFrame frame, JPanel p) {
@@ -30,7 +31,7 @@ public class displayBoard implements ActionListener{
     	backPanel.removeAll();
     	backPanel.revalidate();
     	backPanel.repaint();
-    	//String[] names = {"Player 1","Player 2","Player 3","Player 4"};
+    	String[] names = {"Player 1","Player 2","Player 3","Player 4"};
         
     	rollDice = new JButton("Roll Dice");
     	saveGame = new JButton("Save Game");
@@ -74,8 +75,11 @@ public class displayBoard implements ActionListener{
         new setBoard(boardPanel, step);	//sets the empty pieces
         new boardPieces(boardPanel, step);	//sets pawns to starting position and barricade to its original position
         
-        
         backPanel.add(boardPanel, BorderLayout.CENTER);
+        
+        while(step[0][8].getIcon()==emptySpace) {
+        	//
+        }
     }
 
 	@Override
@@ -103,6 +107,7 @@ public class displayBoard implements ActionListener{
 			Random x = new Random();
 			diceValue = x.nextInt(6) + 1;
 			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"   ");
+			//valueLabel.setText(String.valueOf(step[0][8].getIcon()));
 		}
 		
 		if(selected.equals(saveGame)) {
