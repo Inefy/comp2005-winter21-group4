@@ -20,9 +20,10 @@ public class displayBoard implements ActionListener{
     public int col = 17;
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
-    public JLabel valueLabel = new JLabel("Dice Value: -   ");
+    public JLabel valueLabel = new JLabel("Dice Value: -  ");
+    public JLabel turnOrder = new JLabel("Turn: -  ");
     public int diceValue;
-    public Icon emptySpace = new ImageIcon(displayBoard.class.getResource("/images/emptyspace.png"));
+    public Icon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
     //public String[] names;
    
     public displayBoard(JFrame frame, JPanel p) {
@@ -42,13 +43,19 @@ public class displayBoard implements ActionListener{
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
+    	buttonPanel.add(turnOrder);
     	buttonPanel.add(valueLabel);
+    	
     	buttonPanel.add(rollDice);
-    	rollDice.addActionListener(this);
+    	rollDice.setEnabled(false);
+		rollDice.addActionListener(this);
+		
     	buttonPanel.add(saveGame);
     	saveGame.addActionListener(this);
+    	
     	buttonPanel.add(mainui);
     	mainui.addActionListener(this);
+    	
     	buttonPanel.add(exit);
     	exit.addActionListener(this);
     	
@@ -77,9 +84,15 @@ public class displayBoard implements ActionListener{
         
         backPanel.add(boardPanel, BorderLayout.CENTER);
         
-        while(step[0][8].getIcon()==emptySpace) {
-        	//this loop goes on till
+        while(step[0][8].getIcon()==endgoal) {
+        	//this loop goes on till someone wins the game/reaches the endgoal point
+        	for(int i = 0; i < names.length; i++) {
+        		turnOrder.setText("turn: "+names[i]+"  ");
+        		rollDice.setEnabled(true);
+        		rollDice.addActionListener(this);
+        	}
         }
+        
     }
 
 	@Override
@@ -106,7 +119,8 @@ public class displayBoard implements ActionListener{
 		if(selected.equals(rollDice)) {
 			Random x = new Random();
 			diceValue = x.nextInt(6) + 1;
-			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"   ");
+			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"  ");
+			rollDice.setEnabled(false);
 		}
 		
 		if(selected.equals(saveGame)) {

@@ -10,6 +10,8 @@ public class boardPieces extends JPanel {
 	
 	public JPanel boardPanel;
 	public JButton[][] step;
+	public Icon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
+	public Icon barricade = new ImageIcon(displayBoard.class.getResource("/images/barricade.png"));
 
 	public boardPieces(JPanel panel, JButton[][] button) {
 		
@@ -20,29 +22,29 @@ public class boardPieces extends JPanel {
 		
 		for (int i = 0; i < row; i++){
         	for (int j = 0; j < col; j++){
-        		/*if (i==0) {
+        		if (i==0) {
         			if(j==8) { 
-                    step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
-        			}*/
+                    step[i][j].setIcon(endgoal);}
+        			}
         		if (i==1) {
         			if(j==8) { 
-                        step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
+                        step[i][j].setIcon(barricade);}
         			}
         		if (i==3) {
         			if(j==8) { 
-                        step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
+                        step[i][j].setIcon(barricade);}
         			}
         		if (i==4) {
         			if(j==8) { 
-                        step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
+                        step[i][j].setIcon(barricade);}
         			}
         		if (i==5) {
         			if(j==8) { 
-                        step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
+                        step[i][j].setIcon(barricade);}
         			}
         		if (i==7) {
         			if(j ==6||j ==10) { 
-                        step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
+                        step[i][j].setIcon(barricade);}
         			}
         		if (i==11) {
         			if(j ==0||j ==4||j ==8||j ==12||j ==16) {
