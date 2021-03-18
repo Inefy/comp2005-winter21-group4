@@ -4,7 +4,13 @@ import javax.swing.*;
 public class newGame extends JPanel
 {
     
-    public JFrame UIframe;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	
+	public JFrame UIframe;
     public JPanel newGamePanel;
     public JTextField userNameText;
     public JLabel inputNameLabel;

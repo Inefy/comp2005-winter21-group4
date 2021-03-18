@@ -8,16 +8,20 @@ public class mainUI implements ActionListener
  {
     public JMenuItem cursor, theme;
     public JFrame frame;
-    public JPanel mainPanel = new JPanel();
+    public JPanel mainPanel;
     public JButton newGame;
     public JLabel name = new JLabel("Malefiz");
     public JPanel centerPanel = new JPanel();
     public JPanel northPanel = new JPanel();
     
-    public mainUI(JFrame UIframe) 
+    public mainUI(JFrame UIframe, JPanel UIpanel) 
     {
         //Creating the Frame
     	frame = UIframe;
+    	mainPanel = UIpanel;
+    	mainPanel.removeAll();
+    	mainPanel.revalidate();
+    	mainPanel.repaint();
         frame.setTitle("Malefiz");
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

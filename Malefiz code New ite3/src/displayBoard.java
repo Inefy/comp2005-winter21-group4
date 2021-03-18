@@ -47,6 +47,7 @@ public class displayBoard implements ActionListener{
         step = new JButton[row][col];
         
         
+        //this nested for loop sets the board don't mess with it please
         for (int i = 0; i < row; i++){
         	for (int j = 0; j < col; j++){
         		step[i][j] = new JButton("");
@@ -77,6 +78,7 @@ public class displayBoard implements ActionListener{
 		  if (reply == JOptionPane.YES_OPTION)
 	      {
 			  //direct to mainUI()
+			  new mainUI(UIframe, backPanel);
 	      }
 		}
 		
