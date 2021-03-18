@@ -15,7 +15,7 @@ public class displayBoard implements ActionListener{
     public JPanel buttonPanel;
     public JLabel inputNameLabel;
     public JButton[][] step;
-    public JButton rollDice, saveGame, quit, exit;
+    public JButton rollDice, saveGame, mainui, exit;
    
     public displayBoard(JFrame frame, JPanel p) {
     	UIframe = frame;
@@ -31,16 +31,16 @@ public class displayBoard implements ActionListener{
         
     	rollDice = new JButton("Roll Dice");
     	saveGame = new JButton("Save Game");
-    	quit = new JButton("Quit Game");
+    	mainui = new JButton("Main Menu");
     	exit = new JButton("Exit Game");
-    	quit.addActionListener(this);
+    	mainui.addActionListener(this);
     	exit.addActionListener(this);
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
     	buttonPanel.add(rollDice);
     	buttonPanel.add(saveGame);
-    	buttonPanel.add(quit);
+    	buttonPanel.add(mainui);
     	buttonPanel.add(exit);
     	
     	backPanel.add(buttonPanel, BorderLayout.SOUTH);
@@ -193,10 +193,10 @@ public class displayBoard implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object selected = e.getSource();
-		if(selected.equals(quit)) {
+		if(selected.equals(mainui)) {
 			int reply = JOptionPane.showConfirmDialog(
 					UIframe,
-				    "Are you sure you want to Quit the game?",
+				    "Are you sure you want to go the Main Menu?",
 				    "An Insane Question",
 				    JOptionPane.YES_NO_OPTION);
 		  if (reply == JOptionPane.YES_OPTION)
