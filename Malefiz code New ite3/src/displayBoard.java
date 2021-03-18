@@ -86,6 +86,7 @@ public class displayBoard implements ActionListener{
         
         backPanel.add(boardPanel, BorderLayout.CENTER);
         
+        
         /*while(String.valueOf(step[0][8].getIcon())==String.valueOf(endgoal))
         {
         	//this loop goes on till someone wins the game/reaches the endgoal point
@@ -131,6 +132,7 @@ public class displayBoard implements ActionListener{
 			//valueLabel.setText("Dice Value: "+String.valueOf(endgoal)+"  ");
 			//rollDice.setEnabled(false);
 			turnOrder.setText("Turn: Player "+playerTurn);
+			new movePawn(step,rollDice,diceValue,playerTurn);
 		}
 		
 		if(selected.equals(saveGame)) {
