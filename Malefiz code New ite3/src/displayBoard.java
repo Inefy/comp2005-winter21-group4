@@ -78,7 +78,7 @@ public class displayBoard implements ActionListener{
         backPanel.add(boardPanel, BorderLayout.CENTER);
         
         while(step[0][8].getIcon()==emptySpace) {
-        	//
+        	//this loop goes on till
         }
     }
 
@@ -107,7 +107,6 @@ public class displayBoard implements ActionListener{
 			Random x = new Random();
 			diceValue = x.nextInt(6) + 1;
 			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"   ");
-			//valueLabel.setText(String.valueOf(step[0][8].getIcon()));
 		}
 		
 		if(selected.equals(saveGame)) {
