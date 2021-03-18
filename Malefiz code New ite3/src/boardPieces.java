@@ -20,10 +20,10 @@ public class boardPieces extends JPanel {
 		
 		for (int i = 0; i < row; i++){
         	for (int j = 0; j < col; j++){
-        		if (i==0) {
+        		/*if (i==0) {
         			if(j==8) { 
                     step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
-        			}
+        			}*/
         		if (i==1) {
         			if(j==8) { 
                         step[i][j].setIcon(new ImageIcon(displayBoard.class.getResource("/images/barricade.png")));}
