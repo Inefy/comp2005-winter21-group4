@@ -16,6 +16,8 @@ public class displayBoard implements ActionListener{
     public JPanel backPanel;
     public JPanel buttonPanel;
     public JLabel inputNameLabel;
+    public int row = 16;
+    public int col = 17;
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
     public JLabel valueLabel = new JLabel("Dice Value: -   ");
@@ -51,8 +53,7 @@ public class displayBoard implements ActionListener{
     	
     	backPanel.add(buttonPanel, BorderLayout.SOUTH);
     	
-    	int row = 16;
-        int col = 17;
+    	
         boardPanel = new JPanel(new GridLayout(row, col));
         
         step = new JButton[row][col];
@@ -94,6 +95,7 @@ public class displayBoard implements ActionListener{
 		}
 		
 		if(selected.equals(exit)) {
+			//Direct to exit game
 			new exitGame(UIframe);
 		}
 		
