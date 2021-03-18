@@ -72,6 +72,19 @@ public class mainUI implements ActionListener
         });
         
         centerPanel.add(loadGame).setLocation(2, 1);
+        loadGame.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent aActionEvent)
+            {
+            	Object selected = aActionEvent.getSource();
+              if(selected.equals(loadGame))
+              {
+            	  
+            	  JOptionPane.showMessageDialog(frame, "This feature will be added in the future Release.", 
+      					"Info", JOptionPane.WARNING_MESSAGE);
+            	  
+              }  
+            }
+        });
         centerPanel.add(exitGame).setLocation(3, 1);
         exitGame.addActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent aActionEvent)

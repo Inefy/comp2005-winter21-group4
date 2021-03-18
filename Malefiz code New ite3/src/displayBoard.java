@@ -16,6 +16,7 @@ public class displayBoard implements ActionListener{
     public JLabel inputNameLabel;
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
+    //public String[] names;
    
     public displayBoard(JFrame frame, JPanel p) {
     	UIframe = frame;
@@ -23,20 +24,26 @@ public class displayBoard implements ActionListener{
     	backPanel.removeAll();
     	backPanel.revalidate();
     	backPanel.repaint();
+    	//String[] names = {"Player 1","Player 2","Player 3","Player 4"};
         
     	rollDice = new JButton("Roll Dice");
+    	
     	saveGame = new JButton("Save Game");
     	mainui = new JButton("Main Menu");
     	exit = new JButton("Exit Game");
-    	mainui.addActionListener(this);
-    	exit.addActionListener(this);
+    	
+    	
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
     	buttonPanel.add(rollDice);
+    	rollDice.addActionListener(this);
     	buttonPanel.add(saveGame);
+    	saveGame.addActionListener(this);
     	buttonPanel.add(mainui);
+    	mainui.addActionListener(this);
     	buttonPanel.add(exit);
+    	exit.addActionListener(this);
     	
     	backPanel.add(buttonPanel, BorderLayout.SOUTH);
     	
@@ -84,6 +91,15 @@ public class displayBoard implements ActionListener{
 		
 		if(selected.equals(exit)) {
 			new exitGame(UIframe);
+		}
+		
+		if(selected.equals(rollDice)) {
+			
+		}
+		
+		if(selected.equals(saveGame)) {
+			JOptionPane.showMessageDialog(UIframe, "This feature will be added in the future Release.", 
+					"Info", JOptionPane.WARNING_MESSAGE);
 		}
 		
 	}
