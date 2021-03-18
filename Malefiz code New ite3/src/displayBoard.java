@@ -21,8 +21,8 @@ public class displayBoard implements ActionListener{
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
     public JLabel valueLabel = new JLabel("Dice Value: -  ");
-    public JLabel turnOrder = new JLabel("Turn: -  ");
-    public int diceValue;
+    public JLabel turnOrder = new JLabel("Turn:- ");
+    public int diceValue, playerTurn;
     public Icon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
     //public String[] names;
    
@@ -43,11 +43,13 @@ public class displayBoard implements ActionListener{
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
+    	
     	buttonPanel.add(turnOrder);
+    	
     	buttonPanel.add(valueLabel);
     	
     	buttonPanel.add(rollDice);
-    	rollDice.setEnabled(false);
+    	rollDice.setEnabled(true);
 		rollDice.addActionListener(this);
 		
     	buttonPanel.add(saveGame);
@@ -84,14 +86,17 @@ public class displayBoard implements ActionListener{
         
         backPanel.add(boardPanel, BorderLayout.CENTER);
         
-        while(step[0][8].getIcon()==endgoal) {
+        
+        /*while(String.valueOf(step[0][8].getIcon())==String.valueOf(endgoal))
+        {
         	//this loop goes on till someone wins the game/reaches the endgoal point
-        	for(int i = 0; i < names.length; i++) {
+        	for(int i = 0; i < names.length; i++) 
+        	{
         		turnOrder.setText("turn: "+names[i]+"  ");
         		rollDice.setEnabled(true);
         		rollDice.addActionListener(this);
         	}
-        }
+        }*/
         
     }
 
@@ -117,10 +122,17 @@ public class displayBoard implements ActionListener{
 		}
 		
 		if(selected.equals(rollDice)) {
+			playerTurn++;
+			if(playerTurn > 4) {
+				playerTurn = 1;
+			}
 			Random x = new Random();
 			diceValue = x.nextInt(6) + 1;
 			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"  ");
-			rollDice.setEnabled(false);
+			//valueLabel.setText("Dice Value: "+String.valueOf(endgoal)+"  ");
+			//rollDice.setEnabled(false);
+			turnOrder.setText("Turn: Player "+playerTurn);
+			new movePawn(step,rollDice,diceValue,playerTurn);
 		}
 		
 		if(selected.equals(saveGame)) {
