@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.event.*;
 import javax.swing.*;
 
+@SuppressWarnings("serial")
 public class Player extends JPanel implements ActionListener
 {
     

@@ -3,6 +3,8 @@
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
+
 import javax.swing.*;
 
 
@@ -16,6 +18,8 @@ public class displayBoard implements ActionListener{
     public JLabel inputNameLabel;
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
+    public JLabel valueLabel = new JLabel("Dice Value: -   ");
+    public int diceValue;
     //public String[] names;
    
     public displayBoard(JFrame frame, JPanel p) {
@@ -27,7 +31,6 @@ public class displayBoard implements ActionListener{
     	//String[] names = {"Player 1","Player 2","Player 3","Player 4"};
         
     	rollDice = new JButton("Roll Dice");
-    	
     	saveGame = new JButton("Save Game");
     	mainui = new JButton("Main Menu");
     	exit = new JButton("Exit Game");
@@ -36,6 +39,7 @@ public class displayBoard implements ActionListener{
     	backPanel.setLayout(new BorderLayout());
     	
     	buttonPanel = new JPanel();
+    	buttonPanel.add(valueLabel);
     	buttonPanel.add(rollDice);
     	rollDice.addActionListener(this);
     	buttonPanel.add(saveGame);
@@ -94,7 +98,9 @@ public class displayBoard implements ActionListener{
 		}
 		
 		if(selected.equals(rollDice)) {
-			
+			Random x = new Random();
+			diceValue = x.nextInt(6) + 1;
+			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"   ");
 		}
 		
 		if(selected.equals(saveGame)) {
