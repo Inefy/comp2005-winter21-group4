@@ -8,6 +8,7 @@ public class movePawn implements ActionListener {
 	public JButton[][] step;
 	public JButton rollDice;
 	public int diceValue, playerTurn;
+	public JLabel valueLabel, turnOrder;
 	public ImageIcon emptySpace = new ImageIcon(displayBoard.class.getResource("/images/emptyspace.png"));
 	public ImageIcon barricade = new ImageIcon(displayBoard.class.getResource("/images/barricade.png"));
 	public ImageIcon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
@@ -35,11 +36,13 @@ public class movePawn implements ActionListener {
 	// the current step[][] object
 	// in the loop
 
-	public movePawn(JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn) {
+	public movePawn(JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn, JLabel valuelabel, JLabel turnorder) {
 		step = buttons;
 		rollDice = rolldice;
 		diceValue = dicevalue;
 		playerTurn = playerturn;
+		valueLabel = valuelabel;
+		turnOrder = turnorder;
 
 		player1Des = player1.getDescription();
 		player2Des = player2.getDescription();
@@ -117,19 +120,25 @@ public class movePawn implements ActionListener {
 								for (int y = 0; y < col; y++) {
 									// System.out.println("i'm here!");
 									sample = (ImageIcon) step[x][y].getIcon();
-									
-									
-									// to disable everything else other than empty space on the board (LATER ONLY ENABLE LEGAL MOVES)
+
+									// to disable last two rows and enable other things (LATER ONLY
+									// ENABLE LEGAL MOVES)
 									if (sample != null) {
 										
+										@SuppressWarnings("unused")
 										String temp = sample.getDescription();
-										if (temp.equals(emptySpaceDes)) {
-											// System.out.println("i'm here!");
+										
+										/*
+										 *  if (temp.equals(emptySpaceDes)) { //
+										 * System.out.println("i'm here!"); step[x][y].setEnabled(true); }
+										 * 
+										 * else { // System.out.println("i'm here!"); step[x][y].setEnabled(false); }
+										 */
+										
+										if (x < (row - 2)) {
 											step[x][y].setEnabled(true);
 										}
-										
 										else {
-											// System.out.println("i'm here!");
 											step[x][y].setEnabled(false);
 										}
 									}
@@ -145,7 +154,7 @@ public class movePawn implements ActionListener {
 							 * if x1,y1 is a barricade we have to move it to a legal move if x1,y1 is
 							 * another pawn we have to move it to it's players starting position
 							 */
-
+							
 							if (playerTurn == 1) {
 								step[x2][y2].setIcon(player1);
 								step[x1][y1].setIcon(emptySpace);
