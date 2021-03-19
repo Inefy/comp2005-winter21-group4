@@ -222,6 +222,7 @@ public class movePawn implements ActionListener {
 											}
 										}
 									}
+									flag = 776;
 								}
 
 								else { // capturing pawn
@@ -312,7 +313,7 @@ public class movePawn implements ActionListener {
 							//end of capturing pawn and barricade
 							}
 							//end of flag 2
-						} else if (flag == 3) {
+						} else if (flag == 777) {
 							int x3 = i;
 							int y3 = j;
 
