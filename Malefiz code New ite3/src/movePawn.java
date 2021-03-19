@@ -78,8 +78,9 @@ public class movePawn implements ActionListener
                 {
                 	if (flag == 1)
                     {
-                    x1 = i;
-                    y1 = j;
+                			x1 = i;
+                            y1 = j;
+                		
                     }
                 	if (flag == 2)
                     {
