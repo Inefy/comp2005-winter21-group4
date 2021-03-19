@@ -225,7 +225,8 @@ public class movePawn implements ActionListener {
 								}
 
 								else { // capturing pawn
-
+									
+									
 									if (playerTurn == 1) {
 										step[x2][y2].setIcon(player1);
 										step[x1][y1].setIcon(emptySpace);
