@@ -176,11 +176,13 @@ public class movePawn implements ActionListener {
 										sample = (ImageIcon) step[x][y].getIcon();
 										if (sample != null) {
 											step[x][y].setEnabled(true);
-										} 
+										}
 									}
 								}
-							} else {
-								if (temp.equals(barricadeDes)) {
+							} else { // capturing pawn and barricade
+
+								if (temp.equals(barricadeDes)) { // moving barricade
+
 									if (playerTurn == 1) {
 										step[x2][y2].setIcon(player1);
 										step[x1][y1].setIcon(emptySpace);
@@ -194,8 +196,10 @@ public class movePawn implements ActionListener {
 										step[x2][y2].setIcon(player4);
 										step[x1][y1].setIcon(emptySpace);
 									}
+
 									JOptionPane.showMessageDialog(UIframe, "Move Barricade to a different location.",
 											"Action Required", JOptionPane.WARNING_MESSAGE);
+
 									for (int x = 0; x < row; x++) {
 										for (int y = 0; y < col; y++) {
 											sample = (ImageIcon) step[x][y].getIcon();
@@ -219,9 +223,29 @@ public class movePawn implements ActionListener {
 										}
 									}
 								}
+
+								else { // capturing pawn
+
+									if (playerTurn == 1) {
+										step[x2][y2].setIcon(player1);
+										step[x1][y1].setIcon(emptySpace);
+									} else if (playerTurn == 2) {
+										step[x2][y2].setIcon(player2);
+										step[x1][y1].setIcon(emptySpace);
+									} else if (playerTurn == 3) {
+										step[x2][y2].setIcon(player3);
+										step[x1][y1].setIcon(emptySpace);
+									} else if (playerTurn == 4) {
+										step[x2][y2].setIcon(player4);
+										step[x1][y1].setIcon(emptySpace);
+									}
+
+								}
+								
+							//end of capturing pawn and barricade
 							}
-						}
-						else if (flag == 3) {
+							//end of flag 2
+						} else if (flag == 3) {
 							int x3 = i;
 							int y3 = j;
 
@@ -238,7 +262,7 @@ public class movePawn implements ActionListener {
 										sample = (ImageIcon) step[x][y].getIcon();
 										if (sample != null) {
 											step[x][y].setEnabled(true);
-										} 
+										}
 									}
 								}
 							}
