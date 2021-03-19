@@ -225,22 +225,86 @@ public class movePawn implements ActionListener {
 								}
 
 								else { // capturing pawn
-									
-									
-									if (playerTurn == 1) {
-										step[x2][y2].setIcon(player1);
-										step[x1][y1].setIcon(emptySpace);
-									} else if (playerTurn == 2) {
-										step[x2][y2].setIcon(player2);
-										step[x1][y1].setIcon(emptySpace);
-									} else if (playerTurn == 3) {
-										step[x2][y2].setIcon(player3);
-										step[x1][y1].setIcon(emptySpace);
-									} else if (playerTurn == 4) {
-										step[x2][y2].setIcon(player4);
-										step[x1][y1].setIcon(emptySpace);
+									sample = (ImageIcon) step[x2][y2].getIcon();
+									String capturedPawn = sample.getDescription();
+									if ((playerTurn<5) && (playerTurn>0)) {
+										if (playerTurn == 1) {
+											step[x2][y2].setIcon(player1);
+											step[x1][y1].setIcon(emptySpace);
+										} else if (playerTurn == 2) {
+											step[x2][y2].setIcon(player2);
+											step[x1][y1].setIcon(emptySpace);
+										} else if (playerTurn == 3) {
+											step[x2][y2].setIcon(player3);
+											step[x1][y1].setIcon(emptySpace);
+										} else if (playerTurn == 4) {
+											step[x2][y2].setIcon(player4);
+											step[x1][y1].setIcon(emptySpace);
+										}
 									}
 									
+									
+									if (capturedPawn.equals(player1Des)) {
+										outerloop:
+										for (int x = 14; x < 16; x++) {
+											for (int y = 0; y < col; y++) {
+												if (((x==14) && (y==1||y==2||y==3))||((x==15) && (y==1||y==3))) {
+													ImageIcon startingPosition = (ImageIcon) step[x][y].getIcon();
+													String startPosition = startingPosition.getDescription();
+													if(!capturedPawn.equals(startPosition)) {
+														step[x][y].setIcon(sample);
+														break outerloop;
+													}
+												}
+											}
+										}
+										
+									} else if(capturedPawn.equals(player2Des)) {
+										outerloop:
+											for (int x = 14; x < 16; x++) {
+												for (int y = 0; y < col; y++) {
+													if (((x==14) && (y==5||y==6||y==7))||((x==15) && (y==5||y==7))) {
+														ImageIcon startingPosition = (ImageIcon) step[x][y].getIcon();
+														String startPosition = startingPosition.getDescription();
+														if(!capturedPawn.equals(startPosition)) {
+															step[x][y].setIcon(sample);
+															break outerloop;
+														}
+													}
+												}
+											}
+										
+									} else if(capturedPawn.equals(player3Des)) {
+										outerloop:
+											for (int x = 14; x < 16; x++) {
+												for (int y = 0; y < col; y++) {
+													if (((x==14) && (y==9||y==10||y==11))||((x==15) && (y==9||y==11))) {
+														ImageIcon startingPosition = (ImageIcon) step[x][y].getIcon();
+														String startPosition = startingPosition.getDescription();
+														if(!capturedPawn.equals(startPosition)) {
+															step[x][y].setIcon(sample);
+															break outerloop;
+														}
+													}
+												}
+											}
+										
+									} else if(capturedPawn.equals(player4Des)) {
+										outerloop:
+											for (int x = 14; x < 16; x++) {
+												for (int y = 0; y < col; y++) {
+													if (((x==14) && (y==13||y==14||y==15))||((x==15) && (y==13||y==15))) {
+														ImageIcon startingPosition = (ImageIcon) step[x][y].getIcon();
+														String startPosition = startingPosition.getDescription();
+														if(!capturedPawn.equals(startPosition)) {
+															step[x][y].setIcon(sample);
+															break outerloop;
+														}
+													}
+												}
+											}
+										
+									}
 									JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
 											"No Action Required", JOptionPane.WARNING_MESSAGE);
 								}
