@@ -239,7 +239,9 @@ public class movePawn implements ActionListener {
 										step[x2][y2].setIcon(player4);
 										step[x1][y1].setIcon(emptySpace);
 									}
-
+									
+									JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
+											"No Action Required", JOptionPane.WARNING_MESSAGE);
 								}
 								
 							//end of capturing pawn and barricade
