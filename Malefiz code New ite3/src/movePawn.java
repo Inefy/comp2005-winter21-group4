@@ -1,6 +1,4 @@
 import java.awt.event.*;
-import java.awt.Image.*;
-
 import javax.swing.*;
 
 public class movePawn implements ActionListener {
@@ -13,9 +11,7 @@ public class movePawn implements ActionListener {
 	public ImageIcon emptySpace = new ImageIcon(displayBoard.class.getResource("/images/emptyspace.png"));
 	public ImageIcon barricade = new ImageIcon(displayBoard.class.getResource("/images/barricade.png"));
 	public ImageIcon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
-	public ImageIcon player1 = new ImageIcon(displayBoard.class.getResource("/images/player1.png")); // this will be
-																										// ImageIcon and
-																										// not Icon
+	public ImageIcon player1 = new ImageIcon(displayBoard.class.getResource("/images/player1.png"));
 	public ImageIcon player2 = new ImageIcon(displayBoard.class.getResource("/images/player2.png"));
 	public ImageIcon player3 = new ImageIcon(displayBoard.class.getResource("/images/player3.png"));
 	public ImageIcon player4 = new ImageIcon(displayBoard.class.getResource("/images/player4.png"));
@@ -30,12 +26,14 @@ public class movePawn implements ActionListener {
 
 	/*
 	 * the background useless(was necessary for the implementation) buttons are null
-	 * if you wanna check that with something else.
+	 * if you wanna check something else, keep those useless stuffs in mind. wasted
+	 * our precious time!! thanks Aman for figuring it out!!!
 	 */
 
 	public ImageIcon sample;
-	public String test; // temporary string variable to hold the file path for the current step object
-						// in the loop
+	// public String temp; // temporary string variable to hold the file path for
+	// the current step[][] object
+	// in the loop
 
 	public movePawn(JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn) {
 		step = buttons;
@@ -55,142 +53,100 @@ public class movePawn implements ActionListener {
 		for (int i = 0; i < row; i++) {
 			for (int j = 0; j < col; j++) {
 				// FYSAL todo: only add listener to useful buttons
-				// step[i][j].addActionListener(this);
 
 				sample = (ImageIcon) step[i][j].getIcon();
 				if (sample != null) // this is the most important part. it checks for the white/useless spaces which
 									// are basically null objects
 				{
-					step[i][j].addActionListener(this);
-				}
+					step[i][j].addActionListener(this); // adding action listener to only useful buttons
 
+					step[i][j].setEnabled(false); // disable all the buttons, later enable for each player
+
+					// fysal todo: restrict the other players here
+					String temp = sample.getDescription();
+
+					// to enable player1 pawns
+					if (playerTurn == 1) {
+						if (temp.equals(player1Des)) {
+							step[i][j].setEnabled(true);
+						}
+					}
+					// to enable player2 pawns
+					if (playerTurn == 2) {
+						if (temp.equals(player2Des)) {
+							step[i][j].setEnabled(true);
+						}
+					}
+					// to enable player3 pawns
+					if (playerTurn == 3) {
+						if (temp.equals(player3Des)) {
+							step[i][j].setEnabled(true);
+						}
+					}
+					// to enable player4 pawns
+					if (playerTurn == 4) {
+						if (temp.equals(player4Des)) {
+							step[i][j].setEnabled(true);
+						}
+					}
+				}
 			}
 		}
-		
-		//fysal todo: restrict the other players here
-		
-		
-		
-		
-		
-		
-
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		Object selected = e.getSource();
-		flag++;
-		int i, j;
-		int x, y;
 
-		for (i = 0; i < row; i++) {
-			for (j = 0; j < col; j++) {
+		flag++;
+
+		for (int i = 0; i < row; i++) {
+			for (int j = 0; j < col; j++) {
 				sample = (ImageIcon) step[i][j].getIcon();
 				if (sample != null) // this is the most important part. it checks for the white/useless spaces which
 									// are basically null objects
 				{
 					if (selected.equals(step[i][j])) {
+
 						if (flag == 1) {
 							x1 = i;
 							y1 = j;
-							// to disable all the buttons when player1 takes turn
-							if (playerTurn == 1) {
-
-								for (x = 0; x < row; x++) {
-									for (y = 0; y < col; y++) {
-
-										sample = (ImageIcon) step[x][y].getIcon();
-										if (sample != null) // this is the most important part. it checks for the white
-															// spaces which are basically null objects
-										{
-											test = sample.getDescription();
-											if ((test.equals(player2Des) || test.equals(player3Des)
-													|| test.equals(player4Des)) && (x == 14 || x == 15)) {
-												step[x][y].setEnabled(false);
-											}
+							// System.out.println("i'm here!");
+							// fysal todo: restrict the other players here
+							for (int x = 0; x < row; x++) {
+								for (int y = 0; y < col; y++) {
+									// System.out.println("i'm here!");
+									sample = (ImageIcon) step[x][y].getIcon();
+									
+									
+									// to disable everything else other than empty space on the board (LATER ONLY ENABLE LEGAL MOVES)
+									if (sample != null) {
+										
+										String temp = sample.getDescription();
+										if (temp.equals(emptySpaceDes)) {
+											// System.out.println("i'm here!");
+											step[x][y].setEnabled(true);
 										}
-
-									}
-
-								}
-
-							}
-
-							// to disable all the buttons when player2 takes turn
-							if (playerTurn == 2) {
-
-								for (x = 0; x < row; x++) {
-									for (y = 0; y < col; y++) {
-
-										sample = (ImageIcon) step[x][y].getIcon();
-										if (sample != null) {
-											test = sample.getDescription();
-											if ((test.equals(player1Des) || test.equals(player3Des)
-													|| test.equals(player4Des)) && (x == 14 || x == 15)) {
-												step[x][y].setEnabled(false);
-											}
+										
+										else {
+											// System.out.println("i'm here!");
+											step[x][y].setEnabled(false);
 										}
-
 									}
-
 								}
-
-							}
-
-							// to disable all the buttons when player3 takes turn
-							if (playerTurn == 3) {
-
-								for (x = 0; x < row; x++) {
-									for (y = 0; y < col; y++) {
-
-										sample = (ImageIcon) step[x][y].getIcon();
-										if (sample != null) {
-											test = sample.getDescription();
-											if ((test.equals(player2Des) || test.equals(player1Des)
-													|| test.equals(player4Des)) && (x == 14 || x == 15)) {
-												step[x][y].setEnabled(false);
-											}
-										}
-
-									}
-
-								}
-
-							}
-
-							// to disable all the buttons when player4 takes turn
-							if (playerTurn == 4) {
-
-								for (x = 0; x < row; x++) {
-									for (y = 0; y < col; y++) {
-
-										sample = (ImageIcon) step[x][y].getIcon();
-										if (sample != null) {
-											test = sample.getDescription();
-											if ((test.equals(player2Des) || test.equals(player3Des)
-													|| test.equals(player1Des)) && (x == 14 || x == 15)) {
-												step[x][y].setEnabled(false);
-											}
-										}
-
-									}
-
-								}
-
 							}
 						}
-						if (flag == 2) {
+
+						else if (flag == 2) {
 							x2 = i;
 							y2 = j;
-							for (i = 0; i < row; i++) {
-								for (j = 0; j < col; j++) {
-									step[i][j].setEnabled(true);
-								}
-							}
-							if (x2 == 14 || x2 == 15) {
-								flag = 1;
-							} else if (playerTurn == 1) {
+
+							/*
+							 * if x1,y1 is a barricade we have to move it to a legal move if x1,y1 is
+							 * another pawn we have to move it to it's players starting position
+							 */
+
+							if (playerTurn == 1) {
 								step[x2][y2].setIcon(player1);
 								step[x1][y1].setIcon(emptySpace);
 							} else if (playerTurn == 2) {
@@ -203,13 +159,21 @@ public class movePawn implements ActionListener {
 								step[x2][y2].setIcon(player4);
 								step[x1][y1].setIcon(emptySpace);
 							}
+
+							for (int x = 0; x < row; x++) {
+								for (int y = 0; y < col; y++) {
+									sample = (ImageIcon) step[x][y].getIcon();
+									if (sample != null) {
+										step[x][y].setEnabled(true);
+									} else {
+										step[x][y].setEnabled(false);
+									}
+								}
+							}
 						}
 					}
 				}
-
 			}
 		}
-
 	}
-
 }
