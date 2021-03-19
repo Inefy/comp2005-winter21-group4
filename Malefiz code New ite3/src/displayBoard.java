@@ -132,7 +132,7 @@ public class displayBoard implements ActionListener{
 			//valueLabel.setText("Dice Value: "+String.valueOf(endgoal)+"  ");
 			//rollDice.setEnabled(false);
 			turnOrder.setText("Turn: Player "+playerTurn);
-			new movePawn(step,rollDice,diceValue,playerTurn,valueLabel,turnOrder);
+			new movePawn(UIframe,step,rollDice,diceValue,playerTurn,valueLabel,turnOrder);
 		}
 		
 		if(selected.equals(saveGame)) {

@@ -5,6 +5,7 @@ public class movePawn implements ActionListener {
 
 	public int row = 16;
 	public int col = 17;
+	public JFrame UIframe;
 	public JButton[][] step;
 	public JButton rollDice;
 	public int diceValue, playerTurn;
@@ -36,7 +37,9 @@ public class movePawn implements ActionListener {
 	// the current step[][] object
 	// in the loop
 
-	public movePawn(JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn, JLabel valuelabel, JLabel turnorder) {
+	public movePawn(JFrame frame, JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn,
+			JLabel valuelabel, JLabel turnorder) {
+		UIframe = frame;
 		step = buttons;
 		rollDice = rolldice;
 		diceValue = dicevalue;
@@ -124,21 +127,20 @@ public class movePawn implements ActionListener {
 									// to disable last two rows and enable other things (LATER ONLY
 									// ENABLE LEGAL MOVES)
 									if (sample != null) {
-										
+
 										@SuppressWarnings("unused")
 										String temp = sample.getDescription();
-										
+
 										/*
-										 *  if (temp.equals(emptySpaceDes)) { //
-										 * System.out.println("i'm here!"); step[x][y].setEnabled(true); }
+										 * if (temp.equals(emptySpaceDes)) { // System.out.println("i'm here!");
+										 * step[x][y].setEnabled(true); }
 										 * 
 										 * else { // System.out.println("i'm here!"); step[x][y].setEnabled(false); }
 										 */
-										
+
 										if (x < (row - 2)) {
 											step[x][y].setEnabled(true);
-										}
-										else {
+										} else {
 											step[x][y].setEnabled(false);
 										}
 									}
@@ -154,28 +156,89 @@ public class movePawn implements ActionListener {
 							 * if x1,y1 is a barricade we have to move it to a legal move if x1,y1 is
 							 * another pawn we have to move it to it's players starting position
 							 */
-							
-							if (playerTurn == 1) {
-								step[x2][y2].setIcon(player1);
-								step[x1][y1].setIcon(emptySpace);
-							} else if (playerTurn == 2) {
-								step[x2][y2].setIcon(player2);
-								step[x1][y1].setIcon(emptySpace);
-							} else if (playerTurn == 3) {
-								step[x2][y2].setIcon(player3);
-								step[x1][y1].setIcon(emptySpace);
-							} else if (playerTurn == 4) {
-								step[x2][y2].setIcon(player4);
-								step[x1][y1].setIcon(emptySpace);
-							}
+							String temp = sample.getDescription();
+							if (temp.equals(emptySpaceDes)) {
+								if (playerTurn == 1) {
+									step[x2][y2].setIcon(player1);
+									step[x1][y1].setIcon(emptySpace);
+								} else if (playerTurn == 2) {
+									step[x2][y2].setIcon(player2);
+									step[x1][y1].setIcon(emptySpace);
+								} else if (playerTurn == 3) {
+									step[x2][y2].setIcon(player3);
+									step[x1][y1].setIcon(emptySpace);
+								} else if (playerTurn == 4) {
+									step[x2][y2].setIcon(player4);
+									step[x1][y1].setIcon(emptySpace);
+								}
+								for (int x = 0; x < row; x++) {
+									for (int y = 0; y < col; y++) {
+										sample = (ImageIcon) step[x][y].getIcon();
+										if (sample != null) {
+											step[x][y].setEnabled(true);
+										} 
+									}
+								}
+							} else {
+								if (temp.equals(barricadeDes)) {
+									if (playerTurn == 1) {
+										step[x2][y2].setIcon(player1);
+										step[x1][y1].setIcon(emptySpace);
+									} else if (playerTurn == 2) {
+										step[x2][y2].setIcon(player2);
+										step[x1][y1].setIcon(emptySpace);
+									} else if (playerTurn == 3) {
+										step[x2][y2].setIcon(player3);
+										step[x1][y1].setIcon(emptySpace);
+									} else if (playerTurn == 4) {
+										step[x2][y2].setIcon(player4);
+										step[x1][y1].setIcon(emptySpace);
+									}
+									JOptionPane.showMessageDialog(UIframe, "Move Barricade to a different location.",
+											"Action Required", JOptionPane.WARNING_MESSAGE);
+									for (int x = 0; x < row; x++) {
+										for (int y = 0; y < col; y++) {
+											sample = (ImageIcon) step[x][y].getIcon();
 
-							for (int x = 0; x < row; x++) {
-								for (int y = 0; y < col; y++) {
-									sample = (ImageIcon) step[x][y].getIcon();
-									if (sample != null) {
-										step[x][y].setEnabled(true);
-									} else {
-										step[x][y].setEnabled(false);
+											// to enable the legal moves for barricade
+											if (sample != null) {
+												String check = sample.getDescription();
+												if (x < (row - 2)) {
+													if (check.equals(emptySpaceDes)) {
+														step[x][y].setEnabled(true);
+														rollDice.setEnabled(false);
+													}
+
+													else {
+														step[x][y].setEnabled(false);
+													}
+												} else {
+													step[x][y].setEnabled(false);
+												}
+											}
+										}
+									}
+								}
+							}
+						}
+						else if (flag == 3) {
+							int x3 = i;
+							int y3 = j;
+
+							/*
+							 * if x1,y1 is a barricade we have to move it to a legal move if x1,y1 is
+							 * another pawn we have to move it to it's players starting position
+							 */
+							String temp = sample.getDescription();
+							if (temp.equals(emptySpaceDes)) {
+								step[x3][y3].setIcon(barricade);
+								rollDice.setEnabled(true);
+								for (int x = 0; x < row; x++) {
+									for (int y = 0; y < col; y++) {
+										sample = (ImageIcon) step[x][y].getIcon();
+										if (sample != null) {
+											step[x][y].setEnabled(true);
+										} 
 									}
 								}
 							}
