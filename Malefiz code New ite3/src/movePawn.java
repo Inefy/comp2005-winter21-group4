@@ -306,6 +306,14 @@ public class movePawn implements ActionListener {
 											}
 										
 									}
+									for (int x = 0; x < row; x++) {
+										for (int y = 0; y < col; y++) {
+											sample = (ImageIcon) step[x][y].getIcon();
+											if (sample != null) {
+												step[x][y].setEnabled(true);
+											}
+										}
+									}
 									JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
 											"No Action Required", JOptionPane.WARNING_MESSAGE);
 								}
@@ -313,14 +321,10 @@ public class movePawn implements ActionListener {
 							//end of capturing pawn and barricade
 							}
 							//end of flag 2
-						} else if (flag == 777) {
+						} else if (flag == 777) {	//don't change 777, ask fysal for any questions
 							int x3 = i;
 							int y3 = j;
-
-							/*
-							 * if x1,y1 is a barricade we have to move it to a legal move if x1,y1 is
-							 * another pawn we have to move it to it's players starting position
-							 */
+							
 							String temp = sample.getDescription();
 							if (temp.equals(emptySpaceDes)) {
 								step[x3][y3].setIcon(barricade);
