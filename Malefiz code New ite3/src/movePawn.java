@@ -2,7 +2,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 
-public class movePawn implements ActionListener, MouseListener 
+public class movePawn implements ActionListener
 {
     
         public int row = 16;
@@ -31,36 +31,36 @@ public class movePawn implements ActionListener, MouseListener
         for (int i = 0; i < row; i++){
             for (int j = 0; j < col; j++){
                 step[i][j].addActionListener(this);
+            }
+        }
+        /*for (int i = 0; i < row; i++){
+            for (int j = 0; j < col; j++){
                 if(playerTurn == 1)
                 {
-                	Icon p1 = step[i][j].getIcon();
-                	if(p1 == player1) {
+                	if(step[i][j].getIcon().equals(player1)) {
                 		step[i][j].setEnabled(false);
                 	}
                   }
                 if(playerTurn == 2)
                 {
-                	Icon p2 = step[i][j].getIcon();
-                	if(p2 == player2) {
+                	if(step[i][j].getIcon().equals(player2)) {
                 		step[i][j].setEnabled(false);
                 	}
                   }
                 if(playerTurn == 3)
                 {
-                	Icon p3 = step[i][j].getIcon();
-                	if(p3 == player3) {
+                	if(step[i][j].getIcon().equals(player3)) {
                 		step[i][j].setEnabled(false);
                 	}
                   }
                  if(playerTurn == 4)
                 {
-                	 Icon p4 = step[i][j].getIcon();
-                	 if(p4 == player4) {
+                	 if(step[i][j].getIcon().equals(player4)) {
                  		step[i][j].setEnabled(false);
                  	}
                   }
             }
-        }
+        }*/
         
         
     }
@@ -71,73 +71,49 @@ public class movePawn implements ActionListener, MouseListener
      {
         Object selected = e.getSource();
         flag++;
-        if (flag == 1)
-        {
-            for (int i = 0; i < row; i++)
+        for (int i = 0; i < row; i++)
             {
                 for (int j = 0; j < col; j++){
                 if(selected.equals(step[i][j])) 
                 {
+                	if (flag == 1)
+                    {
                     x1 = i;
                     y1 = j;
+                    }
+                	if (flag == 2)
+                    {
+                		x2 =i;
+                        y2 =j;
+                        if(x2 == 14 || x2==15) {
+                        	flag = 1;
+                        }
+                        if(playerTurn ==1)
+                        {
+                            step[x2][y2].setIcon(player1);
+                            step[x1][y1].setIcon(emptySpace);
+                          }
+                        if(playerTurn ==2)
+                        {
+                            step[x2][y2].setIcon(player2);
+                            step[x1][y1].setIcon(emptySpace);
+                          }
+                        if(playerTurn ==3)
+                        {
+                            step[x2][y2].setIcon(player3);
+                            step[x1][y1].setIcon(emptySpace);
+                          }
+                         if(playerTurn ==4)
+                        {
+                            step[x2][y2].setIcon(player4);
+                            step[x1][y1].setIcon(emptySpace);
+                          }
+                    }
                 }
                 
             }
           }
-        }
-        if (flag == 2)
-        {
-          for (int i = 0; i < row; i++){
-             for (int j = 0; j < col; j++){
-                if(selected.equals(step[i][j])) {
-                    x2 =i;
-                    y2 =j;
-        		}
-            }
-          }
-          if(playerTurn ==1)
-          {
-              step[x2][y2].setIcon(player1);
-              step[x1][y1].setIcon(emptySpace);
-            }
-          if(playerTurn ==2)
-          {
-              step[x2][y2].setIcon(player2);
-              step[x1][y1].setIcon(emptySpace);
-            }
-          if(playerTurn ==3)
-          {
-              step[x2][y2].setIcon(player3);
-              step[x1][y1].setIcon(emptySpace);
-            }
-           if(playerTurn ==4)
-          {
-              step[x2][y2].setIcon(player4);
-              step[x1][y1].setIcon(emptySpace);
-            }
-          
-         
-        
-        }
 
         }    
-	@Override
-    public void mouseClicked(MouseEvent e)
-    {
-		/*Object selected = e.getSource();
-		
-		if (selected instanceof JButton)
-		{
-            JButton step = (JButton) selected;
-            System.out.println(x+","+y);
-            
-		}*/
-	}
-	
-	// not used but must be present to fulfill MouseListener contract
-	public void mouseEntered(MouseEvent arg0){}
-	public void mouseExited(MouseEvent arg0) {}
-	public void mousePressed(MouseEvent arg0) {}
-	public void mouseReleased(MouseEvent arg0) {}
 
 }
