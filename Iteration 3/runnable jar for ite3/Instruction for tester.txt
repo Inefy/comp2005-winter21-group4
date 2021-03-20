@@ -1,0 +1,14 @@
+extend the frame a little bit if anything didn't showup after opening the jar file. we dont know why its doing this.
+
+player page has some layout issues.
+
+please keep the player name colour and pawn shape to default.
+
+while on the board, please follow a happy path if possible, 
+we haven't finished implementation of legal moves. so the board will allow you to go everywhere.
+
+capture the pawn works.
+
+move barricade works,
+
+click roll dice to change turn for now. we will fix it next ite
