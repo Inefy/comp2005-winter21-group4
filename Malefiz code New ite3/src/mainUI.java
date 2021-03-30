@@ -26,8 +26,6 @@ public class mainUI implements ActionListener
         frame.setSize(600, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setResizable(true);
-        frame.setVisible(true);
-
         //Creating the MenuBar and adding components
         JMenuBar menubar = new JMenuBar();
         JMenu menubar_display = new JMenu("Display Options");
@@ -139,6 +137,8 @@ public class mainUI implements ActionListener
         //Adding Components to the frame.
         frame.getContentPane().add(BorderLayout.NORTH, menubar);
         frame.getContentPane().add(BorderLayout.CENTER, mainPanel);
+        frame.setVisible(true);
+
         
     }
     
