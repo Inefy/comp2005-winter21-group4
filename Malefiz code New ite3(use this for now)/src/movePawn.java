@@ -1,4 +1,6 @@
 import java.awt.event.*;
+import java.util.*;
+
 import javax.swing.*;
 
 public class movePawn implements ActionListener {
@@ -36,6 +38,9 @@ public class movePawn implements ActionListener {
 	// public String temp; // temporary string variable to hold the file path for
 	// the current step[][] object
 	// in the loop
+	
+	
+	public ArrayList<JButton> legal = new ArrayList<>();
 
 	public movePawn(JFrame frame, JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn,
 			JLabel valuelabel, JLabel turnorder) {
@@ -99,6 +104,51 @@ public class movePawn implements ActionListener {
 			}
 		}
 	}
+	
+	public void legalmove(int x, int y, int rolled) {
+		
+		if ((step[x][y] != null) && (rolled == 0)) { 
+			legal.add(step[x][y]); 
+			return;
+		}
+		
+		if (x > 13) {
+			sample = (ImageIcon) step[x][y].getIcon();
+			String temp = sample.getDescription();
+			
+			if (temp.equals(player1Des)) {
+				legalmove(13, 2, rolled-1);
+			}
+			
+			if (temp.equals(player2Des)) {
+				legalmove(13, 6, rolled-1);
+			}
+			
+			if (temp.equals(player3Des)) {
+				legalmove(13, 10, rolled-1);
+			}
+
+			if (temp.equals(player4Des)) {
+				legalmove(13, 14, rolled-1);
+			}
+		}
+		
+		if ((step[x+1][y] != null) && ((ImageIcon) step[x+1][y].getIcon() != null)) {
+			legalmove(x+1, y, rolled - 1);
+		}
+		
+		if ((step[x+1][y] != null) && ((ImageIcon) step[x-1][y].getIcon() != null)) {
+			legalmove(x-1, y, rolled - 1); 
+		}
+		
+		if ((step[x+1][y] != null) && ((ImageIcon) step[x][y+1].getIcon() != null)) {
+			legalmove(x, y+1, rolled - 1); 
+		}
+		
+		if ((step[x+1][y] != null) && ((ImageIcon) step[x][y-1].getIcon() != null)) {
+			legalmove(x, y-1, rolled - 1); 
+		}
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -112,6 +162,7 @@ public class movePawn implements ActionListener {
 				if (sample != null) // this is the most important part. it checks for the white/useless spaces which
 									// are basically null objects
 				{
+					//System.out.println(sample);
 					if (selected.equals(step[i][j])) {
 
 						if (flag == 1) {
@@ -119,33 +170,21 @@ public class movePawn implements ActionListener {
 							y1 = j;
 							// System.out.println("i'm here!");
 							// fysal todo: restrict the other players here
+							
+							legalmove(x1, y1, diceValue);
+							int numberofmoves = legal.size();
+							
 							for (int x = 0; x < row; x++) {
 								for (int y = 0; y < col; y++) {
-									// System.out.println("i'm here!");
-									sample = (ImageIcon) step[x][y].getIcon();
-
-									// to disable last two rows and enable other things (LATER ONLY
-									// ENABLE LEGAL MOVES)
-									if (sample != null) {
-
-										@SuppressWarnings("unused")
-										String temp = sample.getDescription();
-
-										/*
-										 * if (temp.equals(emptySpaceDes)) { // System.out.println("i'm here!");
-										 * step[x][y].setEnabled(true); }
-										 * 
-										 * else { // System.out.println("i'm here!"); step[x][y].setEnabled(false); }
-										 */
-
-										if (x < (row - 2)) {
-											step[x][y].setEnabled(true);
-										} else {
-											step[x][y].setEnabled(false);
-										}
-									}
+									step[x][y].setEnabled(false);
 								}
 							}
+							
+							for(int c = 0; c < numberofmoves; c++) {
+								JButton legalbutton = (JButton) legal.get(c);
+								legalbutton.setEnabled(true);
+							}
+							
 						}
 
 						else if (flag == 2) {
@@ -207,7 +246,7 @@ public class movePawn implements ActionListener {
 											// to enable the legal moves for barricade
 											if (sample != null) {
 												String check = sample.getDescription();
-												if (x < (row - 2)) {
+												if (x < (row - 3)) {
 													if (check.equals(emptySpaceDes)) {
 														step[x][y].setEnabled(true);
 														rollDice.setEnabled(false);
