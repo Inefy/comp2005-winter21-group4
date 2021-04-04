@@ -51,7 +51,7 @@ public class movePawn implements ActionListener {
 		playerTurn = playerturn;
 		valueLabel = valuelabel;
 		turnOrder = turnorder;
-
+		
 		player1Des = player1.getDescription();
 		player2Des = player2.getDescription();
 		player3Des = player3.getDescription();
@@ -105,49 +105,61 @@ public class movePawn implements ActionListener {
 		}
 	}
 	
-	public void legalmove(int x, int y, int rolled) {
-		
-		if ((step[x][y] != null) && (rolled == 0)) { 
-			legal.add(step[x][y]); 
-			return;
-		}
-		
+	public void preMove(int x, int y, int rolled) {
 		if (x > 13) {
 			sample = (ImageIcon) step[x][y].getIcon();
 			String temp = sample.getDescription();
 			
 			if (temp.equals(player1Des)) {
-				legalmove(13, 2, rolled-1);
+				legalmove(13, 2, rolled-1, 13, 2);
 			}
 			
 			if (temp.equals(player2Des)) {
-				legalmove(13, 6, rolled-1);
+				legalmove(13, 6, rolled-1, 13, 6);
 			}
 			
 			if (temp.equals(player3Des)) {
-				legalmove(13, 10, rolled-1);
+				legalmove(13, 10, rolled-1, 13, 10);
 			}
 
 			if (temp.equals(player4Des)) {
-				legalmove(13, 14, rolled-1);
+				legalmove(13, 14, rolled-1, 13, 14);
+			}
+		}
+		else {
+			legalmove(x,y,rolled,x,y);
+		}
+	}
+	
+	public void legalmove(int x, int y, int rolled, int x3, int y3) {
+		
+		if ((x > -1 && x < (row-2)) && (y > -1 && y < col)) {
+			
+			if ((step[x][y] != null) && (rolled == 0)) { 
+				legal.add(step[x][y]); 
+				return;
+			}
+			else {
+				
+				if (((x > -1 && x < (row-2)) && (y+1 > -1 && y+1 < col)) && ((ImageIcon) step[x][y+1].getIcon() != null) && (step[x][y+1] != step[x3][y3])) {
+					legalmove(x, y+1, rolled - 1, x, y); 
+				}
+				
+				if (((x > -1 && x < (row-2)) && (y-1 > -1 && y-1 < col)) && ((ImageIcon) step[x][y-1].getIcon() != null) && (step[x][y-1] != step[x3][y3])) {
+					legalmove(x, y-1, rolled - 1, x, y); 
+				}
+				
+				if (((x+1 > -1 && x+1 < (row-2)) && (y > -1 && y < col)) && ((ImageIcon) step[x+1][y].getIcon() != null) && (step[x+1][y] != step[x3][y3])) {
+					legalmove(x+1, y, rolled - 1, x, y);
+				}
+				
+				if (((x-1 > -1 && x-1 < (row-2)) && (y > -1 && y < col)) && ((ImageIcon) step[x-1][y].getIcon() != null) && (step[x-1][y] != step[x3][y3])) {
+					legalmove(x-1, y, rolled - 1, x, y); 
+				}
+				
 			}
 		}
 		
-		if ((step[x+1][y] != null) && ((ImageIcon) step[x+1][y].getIcon() != null)) {
-			legalmove(x+1, y, rolled - 1);
-		}
-		
-		if ((step[x+1][y] != null) && ((ImageIcon) step[x-1][y].getIcon() != null)) {
-			legalmove(x-1, y, rolled - 1); 
-		}
-		
-		if ((step[x+1][y] != null) && ((ImageIcon) step[x][y+1].getIcon() != null)) {
-			legalmove(x, y+1, rolled - 1); 
-		}
-		
-		if ((step[x+1][y] != null) && ((ImageIcon) step[x][y-1].getIcon() != null)) {
-			legalmove(x, y-1, rolled - 1); 
-		}
 	}
 
 	@Override
@@ -171,7 +183,7 @@ public class movePawn implements ActionListener {
 							// System.out.println("i'm here!");
 							// fysal todo: restrict the other players here
 							
-							legalmove(x1, y1, diceValue);
+							preMove(x1, y1, diceValue);
 							int numberofmoves = legal.size();
 							
 							for (int x = 0; x < row; x++) {
