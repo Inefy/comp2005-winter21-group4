@@ -142,19 +142,47 @@ public class movePawn implements ActionListener {
 			else {
 				
 				if (((x > -1 && x < (row-2)) && (y+1 > -1 && y+1 < col)) && ((ImageIcon) step[x][y+1].getIcon() != null) && (step[x][y+1] != step[x3][y3])) {
-					legalmove(x, y+1, rolled - 1, x, y); 
+					sample = (ImageIcon) step[x][y+1].getIcon();
+					String temp = sample.getDescription();
+					if (!temp.equals(barricadeDes)) {
+						legalmove(x, y+1, rolled - 1, x, y);
+					}
+					else if (temp.equals(barricadeDes) && (rolled-1 == 0)) {
+						legalmove(x, y+1, rolled - 1, x, y);
+					}
 				}
 				
 				if (((x > -1 && x < (row-2)) && (y-1 > -1 && y-1 < col)) && ((ImageIcon) step[x][y-1].getIcon() != null) && (step[x][y-1] != step[x3][y3])) {
-					legalmove(x, y-1, rolled - 1, x, y); 
+					sample = (ImageIcon) step[x][y-1].getIcon();
+					String temp = sample.getDescription();
+					if (!temp.equals(barricadeDes)) {
+						legalmove(x, y-1, rolled - 1, x, y); 
+					}
+					else if (temp.equals(barricadeDes) && (rolled-1 == 0)) {
+						legalmove(x, y-1, rolled - 1, x, y);
+					}
 				}
 				
 				if (((x+1 > -1 && x+1 < (row-2)) && (y > -1 && y < col)) && ((ImageIcon) step[x+1][y].getIcon() != null) && (step[x+1][y] != step[x3][y3])) {
-					legalmove(x+1, y, rolled - 1, x, y);
+					sample = (ImageIcon) step[x+1][y].getIcon();
+					String temp = sample.getDescription();
+					if (!temp.equals(barricadeDes)) {
+						legalmove(x+1, y, rolled - 1, x, y);
+					}
+					else if (temp.equals(barricadeDes) && (rolled-1 == 0)) {
+						legalmove(x+1, y, rolled - 1, x, y);
+					}
 				}
 				
 				if (((x-1 > -1 && x-1 < (row-2)) && (y > -1 && y < col)) && ((ImageIcon) step[x-1][y].getIcon() != null) && (step[x-1][y] != step[x3][y3])) {
-					legalmove(x-1, y, rolled - 1, x, y); 
+					sample = (ImageIcon) step[x-1][y].getIcon();
+					String temp = sample.getDescription();
+					if (!temp.equals(barricadeDes)) {
+						legalmove(x-1, y, rolled - 1, x, y);
+					}
+					else if (temp.equals(barricadeDes) && (rolled-1 == 0)) {
+						legalmove(x-1, y, rolled - 1, x, y);
+					} 
 				}
 				
 			}
