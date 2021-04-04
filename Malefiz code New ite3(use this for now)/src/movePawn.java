@@ -105,6 +105,7 @@ public class movePawn implements ActionListener {
 		}
 	}
 	
+	//checking if the pawn this algo will move is in the starting position or not
 	public void preMove(int x, int y, int rolled) {
 		if (x > 13) {
 			sample = (ImageIcon) step[x][y].getIcon();
@@ -131,6 +132,7 @@ public class movePawn implements ActionListener {
 		}
 	}
 	
+	//please dont mess anything here took me a long time. if you need to change anything tell me first. -Fysal
 	public void legalmove(int x, int y, int rolled, int x3, int y3) {
 		
 		if ((x > -1 && x < (row-2)) && (y > -1 && y < col)) {
