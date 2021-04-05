@@ -32,7 +32,7 @@ public class displayBoard implements ActionListener{
     	backPanel.removeAll();
     	backPanel.revalidate();
     	backPanel.repaint();
-    	String[] names = {"Player 1","Player 2","Player 3","Player 4"};
+    	String[] names = {"King", "Knight", "Rook", "Bishop"};
         
     	rollDice = new JButton("Roll Dice");
     	saveGame = new JButton("Save Game");
