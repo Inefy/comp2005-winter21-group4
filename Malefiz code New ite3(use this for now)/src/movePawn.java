@@ -423,6 +423,12 @@ public class movePawn implements ActionListener {
 								
 							//end of capturing pawn and barricade
 							}
+							int xx = playerTurn;
+							if(xx == 4) {
+								xx = 0;
+							}
+							valueLabel.setText("Dice Value: -  ");
+							turnOrder.setText("Turn: Player "+(xx+1));
 							rollDice.setEnabled(true);
 							//end of flag 2
 						} else if (flag == 777) {	//don't change 777, ask fysal for any questions
@@ -442,7 +448,15 @@ public class movePawn implements ActionListener {
 									}
 								}
 							}
+							
+							int xx = playerTurn;
+							if(xx == 4) {
+								xx = 1;
+							}
+							valueLabel.setText("Dice Value: -  ");
+							turnOrder.setText("Turn: Player "+(playerTurn+1));
 						}
+						
 						
 						
 					}
