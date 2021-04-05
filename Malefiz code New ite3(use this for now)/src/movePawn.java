@@ -264,6 +264,15 @@ public class movePawn implements ActionListener {
 										}
 									}
 								}
+								
+								int xx = playerTurn;
+								if(xx == 4) {
+									xx = 0;
+								}
+								valueLabel.setText("Dice Value: -  ");
+								turnOrder.setText("Turn: Player "+(xx+1));
+								rollDice.setEnabled(true);
+								
 							} else { // capturing pawn and barricade
 
 								if (temp.equals(barricadeDes)) { // moving barricade
@@ -308,6 +317,15 @@ public class movePawn implements ActionListener {
 										}
 									}
 									flag = 776;
+									
+									int xx = playerTurn;
+									if(xx == 4) {
+										xx = 0;
+									}
+									valueLabel.setText("Dice Value: -  ");
+									turnOrder.setText("Turn: Player "+(xx+1));
+									
+									
 								}
 
 								else { // capturing pawn and endgoal
@@ -344,6 +362,8 @@ public class movePawn implements ActionListener {
 												}
 											}
 										}
+										JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
+												"No Action Required", JOptionPane.WARNING_MESSAGE);
 										
 									} else if(capturedPawn.equals(player2Des)) {
 										outerloop:
@@ -359,6 +379,8 @@ public class movePawn implements ActionListener {
 													}
 												}
 											}
+										JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
+												"No Action Required", JOptionPane.WARNING_MESSAGE);
 										
 									} else if(capturedPawn.equals(player3Des)) {
 										outerloop:
@@ -374,6 +396,8 @@ public class movePawn implements ActionListener {
 													}
 												}
 											}
+										JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
+												"No Action Required", JOptionPane.WARNING_MESSAGE);
 										
 									} else if(capturedPawn.equals(player4Des)) {
 										outerloop:
@@ -389,6 +413,8 @@ public class movePawn implements ActionListener {
 													}
 												}
 											}
+										JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
+												"No Action Required", JOptionPane.WARNING_MESSAGE);
 										
 									} else if(capturedPawn.equals(endgoalDes)) {
 										if (playerTurn == 1) {
@@ -417,19 +443,20 @@ public class movePawn implements ActionListener {
 											}
 										}
 									}
-									JOptionPane.showMessageDialog(UIframe, "Captured Pawn was sent back to the starting position.",
-											"No Action Required", JOptionPane.WARNING_MESSAGE);
+									
+									int xx = playerTurn;
+									if(xx == 4) {
+										xx = 0;
+									}
+									valueLabel.setText("Dice Value: -  ");
+									turnOrder.setText("Turn: Player "+(xx+1));
+									rollDice.setEnabled(true);
+									
 								}
 								
 							//end of capturing pawn and barricade
 							}
-							int xx = playerTurn;
-							if(xx == 4) {
-								xx = 0;
-							}
-							valueLabel.setText("Dice Value: -  ");
-							turnOrder.setText("Turn: Player "+(xx+1));
-							rollDice.setEnabled(true);
+							
 							//end of flag 2
 						} else if (flag == 777) {	//don't change 777, ask fysal for any questions
 							int x3 = i;
@@ -438,7 +465,6 @@ public class movePawn implements ActionListener {
 							String temp = sample.getDescription();
 							if (temp.equals(emptySpaceDes)) {
 								step[x3][y3].setIcon(barricade);
-								rollDice.setEnabled(true);
 								for (int x = 0; x < row; x++) {
 									for (int y = 0; y < col; y++) {
 										sample = (ImageIcon) step[x][y].getIcon();
@@ -454,7 +480,8 @@ public class movePawn implements ActionListener {
 								xx = 1;
 							}
 							valueLabel.setText("Dice Value: -  ");
-							turnOrder.setText("Turn: Player "+(playerTurn+1));
+							turnOrder.setText("Turn: Player "+(xx+1));
+							rollDice.setEnabled(true);
 						}
 						
 						
