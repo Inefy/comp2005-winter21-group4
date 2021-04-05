@@ -8,6 +8,7 @@ public class movePawn implements ActionListener {
 	public int row = 16;
 	public int col = 17;
 	public JFrame UIframe;
+	public JPanel backPanel;
 	public JButton[][] step;
 	public JButton rollDice;
 	public int diceValue, playerTurn;
@@ -43,8 +44,9 @@ public class movePawn implements ActionListener {
 	public ArrayList<JButton> legal = new ArrayList<>();
 
 	public movePawn(JFrame frame, JButton[][] buttons, JButton rolldice, int dicevalue, int playerturn,
-			JLabel valuelabel, JLabel turnorder) {
+			JLabel valuelabel, JLabel turnorder, JPanel jpanel) {
 		UIframe = frame;
+		backPanel = jpanel;
 		step = buttons;
 		rollDice = rolldice;
 		diceValue = dicevalue;
@@ -213,6 +215,8 @@ public class movePawn implements ActionListener {
 							// System.out.println("i'm here!");
 							// fysal todo: restrict the other players here
 							
+							//^^here^^ eykhane ashbe
+							//rollDice.setEnabled(false);
 							preMove(x1, y1, diceValue);
 							int numberofmoves = legal.size();
 							
@@ -291,7 +295,7 @@ public class movePawn implements ActionListener {
 												if (x < (row - 3)) {
 													if (check.equals(emptySpaceDes)) {
 														step[x][y].setEnabled(true);
-														rollDice.setEnabled(false);
+														//here "eykhane ashbe"
 													}
 
 													else {
@@ -306,7 +310,7 @@ public class movePawn implements ActionListener {
 									flag = 776;
 								}
 
-								else { // capturing pawn
+								else { // capturing pawn and endgoal
 									sample = (ImageIcon) step[x2][y2].getIcon();
 									String capturedPawn = sample.getDescription();
 									if ((playerTurn<5) && (playerTurn>0)) {
@@ -386,6 +390,24 @@ public class movePawn implements ActionListener {
 												}
 											}
 										
+									} else if(capturedPawn.equals(endgoalDes)) {
+										if (playerTurn == 1) {
+											JOptionPane.showMessageDialog(UIframe, "Player 1 Wins!",
+													"Congratulations!", JOptionPane.WARNING_MESSAGE);
+											new mainUI(UIframe, backPanel);
+										} else if (playerTurn == 2) {
+											JOptionPane.showMessageDialog(UIframe, "Player 2 Wins!",
+													"Congratulations!", JOptionPane.WARNING_MESSAGE);
+											new mainUI(UIframe, backPanel);
+										} else if (playerTurn == 3) {
+											JOptionPane.showMessageDialog(UIframe, "Player 3 Wins!",
+													"Congratulations!", JOptionPane.WARNING_MESSAGE);
+											new mainUI(UIframe, backPanel);
+										} else if (playerTurn == 4) {
+											JOptionPane.showMessageDialog(UIframe, "Player 4 Wins!",
+													"Congratulations!", JOptionPane.WARNING_MESSAGE);
+											new mainUI(UIframe, backPanel);
+										}
 									}
 									for (int x = 0; x < row; x++) {
 										for (int y = 0; y < col; y++) {
@@ -401,6 +423,7 @@ public class movePawn implements ActionListener {
 								
 							//end of capturing pawn and barricade
 							}
+							rollDice.setEnabled(true);
 							//end of flag 2
 						} else if (flag == 777) {	//don't change 777, ask fysal for any questions
 							int x3 = i;
@@ -420,6 +443,8 @@ public class movePawn implements ActionListener {
 								}
 							}
 						}
+						
+						
 					}
 				}
 			}
