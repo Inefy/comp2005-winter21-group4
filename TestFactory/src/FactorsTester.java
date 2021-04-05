@@ -53,7 +53,15 @@ class FactorsTester {
 	void testgetfactors2() {
 		
 		//Test 2: should return [] because parameter is 1
-		//assertEquals(null, FactorsUtility.getFactors(1));
+		assertEquals(null, FactorsUtility.getFactors(1));
+	}
+	
+	@Test
+	void testgefactors3() {
+		
+		//Test3: should return [] because parameter is 0
+		dad.equals((FactorsUtility.getFactors(0)));
+		assertEquals(dad.size() == 0, FactorsUtility.getFactors(2));	
 	}
 
 	@Test
@@ -61,6 +69,14 @@ class FactorsTester {
 		
 		//Test 4: should throw exception because parameter is than 0
 		assertThrows(IllegalArgumentException.class, () -> FactorsUtility.getFactors(-1));
+	}
+	
+	@Test
+	void testgefactors5() {
+		
+		//Test5: should return [1,2,3,4,6] because parameter is 12
+		dad.equals((FactorsUtility.getFactors(12)));
+		assertEquals(dad.size() == 5, FactorsUtility.getFactors(2));	
 	}
 	
 	@Test
@@ -91,7 +107,6 @@ class FactorsTester {
 		//Test4: should return false as 2 is not a factor of 3
 		boolean result = false;
 		assertEquals(result, FactorsUtility.factor(3, 2));
-
 	}
 	
 	@Test
