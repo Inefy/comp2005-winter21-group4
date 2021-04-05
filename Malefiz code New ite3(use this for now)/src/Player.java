@@ -21,6 +21,10 @@ public class Player extends JPanel implements ActionListener
     public JButton change_colour = new JButton("Pick Colour");
     public JButton change_pawn = new JButton("Change Shape");
     public JButton preview = new JButton("Preview");
+    public static String player1Name;
+	public static String player2Name;
+	public static String player3Name;
+	public static String player4Name;
     
     public Player(JFrame frame, JPanel p)
     {
@@ -123,6 +127,7 @@ public class Player extends JPanel implements ActionListener
             	  String input = JOptionPane.showInputDialog(null, "Enter your player Name please");
             	  if (!input.isBlank()) {
             		  player1.setText(input);
+            		  player1Name = input; //for displayboard
             	  }
               }  
             }
@@ -205,6 +210,7 @@ public class Player extends JPanel implements ActionListener
             	  String input = JOptionPane.showInputDialog(null, "Enter your player Name please");
             	  if (!input.isBlank()) {
             		  player2.setText(input);
+            		  player2Name = input; //for displayboard
             	  }
               }  
             }
@@ -288,6 +294,7 @@ public class Player extends JPanel implements ActionListener
             	  String input = JOptionPane.showInputDialog(null, "Enter your player Name please");
             	  if (!input.isBlank()) {
             		  player3.setText(input);
+            		  player3Name = input; //for displayboard
             	  }
               }  
             }
@@ -370,6 +377,7 @@ public class Player extends JPanel implements ActionListener
             	  String input = JOptionPane.showInputDialog(null, "Enter your player Name please");
             	  if (!input.isBlank()) {
             		  player4.setText(input);
+            		  player4Name = input; //for displayboard
             	  }
               }  
             }

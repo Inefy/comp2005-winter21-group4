@@ -21,10 +21,14 @@ public class displayBoard implements ActionListener{
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
     public JLabel valueLabel = new JLabel("Dice Value: -  ");
-    public JLabel turnOrder = new JLabel("Turn: King ");
+    public JLabel turnOrder = new JLabel("Turn: " + Player.player1Name);
     public int diceValue, playerTurn;
     public Icon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
     //public String[] names;
+    
+  
+   
+	
    
     public displayBoard(JFrame frame, JPanel p) {
     	UIframe = frame;
@@ -32,7 +36,7 @@ public class displayBoard implements ActionListener{
     	backPanel.removeAll();
     	backPanel.revalidate();
     	backPanel.repaint();
-    	String[] names = {"King", "Knight", "Rook", "Bishop"};
+    	//String[] names = {"King", "Knight", "Rook", "Bishop"};
         
     	rollDice = new JButton("Roll Dice");
     	saveGame = new JButton("Save Game");
@@ -125,13 +129,31 @@ public class displayBoard implements ActionListener{
 			playerTurn++;
 			if(playerTurn > 4) {
 				playerTurn = 1;
+				
+				
 			}
 			Random x = new Random();
 			diceValue = x.nextInt(6) + 1;
 			valueLabel.setText("Dice Value: "+String.valueOf(diceValue)+"  ");
 			//valueLabel.setText("Dice Value: "+String.valueOf(endgoal)+"  ");
 			//rollDice.setEnabled(false);
-			turnOrder.setText("Turn: Player "+playerTurn);
+			
+			if( playerTurn ==(1)){
+				turnOrder.setText("Turn: "+ Player.player1Name);
+				}
+			else if( playerTurn == (2)){
+				turnOrder.setText("Turn: "+ Player.player2Name);
+				}
+			else if( playerTurn == (3)){
+				turnOrder.setText("Turn: "+ Player.player3Name);
+				}
+			else if( playerTurn == (4)){
+				turnOrder.setText("Turn: "+ Player.player4Name);
+				} 
+			//turnOrder.setText("Turn: Player "+playerTurn);
+			
+			
+			
 			rollDice.setEnabled(false);
 			new movePawn(UIframe,step,rollDice,diceValue,playerTurn,valueLabel,turnOrder,backPanel);
 		}
