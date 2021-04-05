@@ -220,6 +220,28 @@ public class movePawn implements ActionListener {
 							preMove(x1, y1, diceValue);
 							int numberofmoves = legal.size();
 							
+							//aman take a look here
+							if (numberofmoves == 0) {
+								JOptionPane.showMessageDialog(UIframe, "No possible move for this Pawn. Next player will take turn.",
+										"Action Required", JOptionPane.WARNING_MESSAGE);
+								for (int x = 0; x < row; x++) {
+									for (int y = 0; y < col; y++) {
+										sample = (ImageIcon) step[x][y].getIcon();
+										if (sample != null) {
+											step[x][y].setEnabled(true);
+										}
+									}
+								}
+								int xx = playerTurn;
+								if(xx == 4) {
+									xx = 0;
+								}
+								valueLabel.setText("Dice Value: -  ");
+								turnOrder.setText("Turn: Player "+(xx+1));
+								rollDice.setEnabled(true);
+								flag = 999;
+							}
+							
 							for (int x = 0; x < row; x++) {
 								for (int y = 0; y < col; y++) {
 									step[x][y].setEnabled(false);
@@ -331,6 +353,27 @@ public class movePawn implements ActionListener {
 								else { // capturing pawn and endgoal
 									sample = (ImageIcon) step[x2][y2].getIcon();
 									String capturedPawn = sample.getDescription();
+									if (capturedPawn.equals(((ImageIcon) step[x1][y1].getIcon()).getDescription())) {
+										JOptionPane.showMessageDialog(UIframe, "You can not capture your own pawn. Next player will take turn",
+												"Alert", JOptionPane.WARNING_MESSAGE);
+										for (int x = 0; x < row; x++) {
+											for (int y = 0; y < col; y++) {
+												sample = (ImageIcon) step[x][y].getIcon();
+												if (sample != null) {
+													step[x][y].setEnabled(true);
+												}
+											}
+										}
+										int xx = playerTurn;
+										if(xx == 4) {
+											xx = 0;
+										}
+										valueLabel.setText("Dice Value: -  ");
+										turnOrder.setText("Turn: Player "+(xx+1));
+										rollDice.setEnabled(true);
+										flag = 999;
+										return;
+									}
 									if ((playerTurn<5) && (playerTurn>0)) {
 										if (playerTurn == 1) {
 											step[x2][y2].setIcon(player1);
