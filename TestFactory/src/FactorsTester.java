@@ -7,6 +7,8 @@ import org.junit.jupiter.api.Test;
 
 class FactorsTester {
 
+	ArrayList<Integer> dad = new ArrayList<Integer>();
+	
 	@Test
 	void testPerfect1()
 	{	
