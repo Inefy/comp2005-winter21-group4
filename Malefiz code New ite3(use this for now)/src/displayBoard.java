@@ -21,7 +21,7 @@ public class displayBoard implements ActionListener{
     public JButton[][] step;
     public JButton rollDice, saveGame, mainui, exit;
     public JLabel valueLabel = new JLabel("Dice Value: -  ");
-    public JLabel turnOrder = new JLabel("Turn: Player 1 ");
+    public JLabel turnOrder = new JLabel("Turn: King ");
     public int diceValue, playerTurn;
     public Icon endgoal = new ImageIcon(displayBoard.class.getResource("/images/endgoal.png"));
     //public String[] names;
