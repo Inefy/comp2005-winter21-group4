@@ -16,7 +16,7 @@ public class Player extends JPanel implements ActionListener
     public JButton player1, player2, player3, player4;
     public JButton pawn1, pawn2, pawn3, pawn4;
     public JButton color1,color2,color3,color4;
-    public JButton preview1, preview2, preview3, preview4;
+    public JLabel preview1, preview2, preview3, preview4;
     public JButton change_name = new JButton("Change Name");
     public JButton change_colour = new JButton("Pick Colour");
     public JButton change_pawn = new JButton("Change Shape");
@@ -24,14 +24,14 @@ public class Player extends JPanel implements ActionListener
 	public static String player2Name;
 	public static String player3Name;
 	public static String player4Name;
-	public JButton preview = new JButton("Preview");
+	public JLabel preview = new JLabel("Preview");
 	
     public Player(JFrame frame, JPanel p)
     {
     	UIframe = frame;
         info = p;
         
-        info.setLayout( new GridLayout(2,4));
+        info.setLayout( new GridLayout(2,2));
         Icon Startimage = new ImageIcon(Player.class.getResource("/images/start.png"));
         Icon Backimage = new ImageIcon(Player.class.getResource("/images/back.png"));
         
@@ -82,6 +82,9 @@ public class Player extends JPanel implements ActionListener
         pawn_panel.setLayout(new GridLayout(5,1));
         pawn_panel.setOpaque(false);
         
+        preview_panel.setLayout(new GridLayout(5,1));
+        preview_panel.setOpaque(false);
+        
 
         
         change_name.setSize(50,50);
@@ -109,10 +112,7 @@ public class Player extends JPanel implements ActionListener
         pawn_panel.add(change_pawn).setLocation(1,1);
         
         preview.setSize(50,50);
-        preview.setBorderPainted(false);
-        preview.setOpaque(false);
-        preview.setContentAreaFilled(false);
-        preview.removeActionListener(this);
+        preview.setOpaque(true);
         preview.setFocusable(false);
         preview_panel.add(preview).setLocation(1,1);
 
@@ -191,14 +191,11 @@ public class Player extends JPanel implements ActionListener
             }
         });
         
-        preview1 = new JButton("");
-        preview1.setBorderPainted(false);
-        preview1.setOpaque(false);
-        preview1.setContentAreaFilled(false);
-        preview1.removeActionListener(this);
+        preview1 = new JLabel("");
+        preview1.setOpaque(true);
         preview1.setFocusable(false);
         preview1.setIcon(new ImageIcon(Player.class.getResource("/images/player1.png")));
-        preview_panel.add(preview1).setLocation(2,1);
+        preview_panel.add(preview1).setLocation(2,2);
 
         
         //info player 2
@@ -275,11 +272,8 @@ public class Player extends JPanel implements ActionListener
             }
         });
         
-        preview2 = new JButton("");
-        preview2.setBorderPainted(false);
-        preview2.setOpaque(false);
-        preview2.setContentAreaFilled(false);
-        preview2.removeActionListener(this);
+        preview2 = new JLabel("");
+        preview2.setOpaque(true);
         preview2.setFocusable(false);
         preview2.setIcon(new ImageIcon(Player.class.getResource("/images/player2.png")));
         preview_panel.add(preview2).setLocation(3,1);
@@ -360,11 +354,8 @@ public class Player extends JPanel implements ActionListener
             }
         });
         
-        preview3 = new JButton("");
-        preview3.setBorderPainted(false);
-        preview3.setOpaque(false);
-        preview3.setContentAreaFilled(false);
-        preview3.removeActionListener(this);
+        preview3 = new JLabel("");
+        preview3.setOpaque(true);
         preview3.setFocusable(false);
         preview3.setIcon(new ImageIcon(Player.class.getResource("/images/player3.png")));
         preview_panel.add(preview3).setLocation(4,1);
@@ -442,11 +433,8 @@ public class Player extends JPanel implements ActionListener
             }
         });
         
-        preview4 = new JButton("");
-        preview4.setBorderPainted(false);
-        preview4.setOpaque(false);
-        preview4.setContentAreaFilled(false);
-        preview4.removeActionListener(this);
+        preview4 = new JLabel("");
+        preview4.setOpaque(true);
         preview4.setFocusable(false);
         preview4.setIcon(new ImageIcon(Player.class.getResource("/images/player4.png")));
         preview_panel.add(preview4).setLocation(5,1);
@@ -454,9 +442,8 @@ public class Player extends JPanel implements ActionListener
         JLabel empty = new JLabel(" ");
         
         info.add(player_panel).setLocation(1, 1);
-        info.add(empty).setLocation(1, 2);
-        info.add(empty).setLocation(1, 3);
-        info.add(preview_panel).setLocation(1, 4);
+
+        info.add(preview_panel).setLocation(1, 2);
 
         
         
@@ -469,7 +456,6 @@ public class Player extends JPanel implements ActionListener
         empty.setSize(50, 50);
 
         info.add(start).setLocation(2, 3);
-        info.add(empty).setLocation(2, 2);
         info.add(back).setLocation(2, 1);
     }
     public void actionPerformed (ActionEvent aevt){
