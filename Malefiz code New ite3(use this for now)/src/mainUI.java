@@ -6,17 +6,21 @@ import javax.swing.*;
 
 public class mainUI implements ActionListener
  {
+    Icon name1 = new ImageIcon(mainUI.class.getResource("/images/name.png"));
     public JMenuItem cursor, theme, instructions;
     public JFrame frame;
     public JPanel mainPanel;
     public JButton newGame;
-    public JLabel name = new JLabel("Malefiz");
+    public JLabel name = new JLabel(name1);
     public JPanel centerPanel = new JPanel();
     public JPanel northPanel = new JPanel();
     
     public mainUI(JFrame UIframe, JPanel UIpanel) 
     {
         //Creating the Frame
+        Icon newGameimage = new ImageIcon(mainUI.class.getResource("/images/newGame.png"));
+        Icon loadGameimage = new ImageIcon(mainUI.class.getResource("/images/LoadGame.png"));
+        Icon exitGameimage = new ImageIcon(mainUI.class.getResource("/images/ExitGame.png"));
     	frame = UIframe;
     	mainPanel = UIpanel;
     	mainPanel.removeAll();
@@ -40,18 +44,20 @@ public class mainUI implements ActionListener
         instructions = new JMenuItem("Instructions");
         
         //creating buttons
-        JButton newGame = new JButton("New Game");
-        JButton exitGame = new JButton("Exit Game");
-        JButton loadGame = new JButton("Load Game");
+        JButton newGame = new JButton(newGameimage);
+        JButton exitGame = new JButton(exitGameimage);
+        JButton loadGame = new JButton(loadGameimage);
         newGame.setFont(new Font("Tahoma", Font.PLAIN, 40));
         exitGame.setFont(new Font("Tahoma", Font.PLAIN, 40));
         loadGame.setFont(new Font("Tahoma", Font.PLAIN, 40));
         newGame.setSize(40, 40);
+        loadGame.setSize(40, 40);
         exitGame.setSize(40, 40);
-        exitGame.setSize(40, 40);
+        
         exitGame.addActionListener(this);
         mainPanel.setLayout(new BorderLayout());
-        mainPanel.setBackground(Color.WHITE);
+        Color maincolour = new Color(158, 123, 100);
+        mainPanel.setBackground(maincolour);
         
         northPanel.setLayout(new FlowLayout());
         northPanel.setOpaque(false);
